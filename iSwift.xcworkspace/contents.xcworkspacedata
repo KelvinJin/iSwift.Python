@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:CommandLine/CommandLine.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftZMQ/SwiftZMQ.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:iSwiftCore/iSwiftCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:iSwift.xcodeproj">
+   </FileRef>
+</Workspace>
