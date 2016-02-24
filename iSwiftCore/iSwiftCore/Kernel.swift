@@ -12,6 +12,11 @@ import CommandLine
 
 private let loggerLevel = 30
 
+enum Error: ErrorType {
+    case SocketError(String)
+    case GeneralError(String)
+}
+
 enum Logger: Int {
     case Debug = 10
     case Info = 20

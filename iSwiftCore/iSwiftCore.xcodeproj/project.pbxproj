@@ -24,6 +24,9 @@
 		29792A391C77433100E1B3D1 /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29792A381C77433100E1B3D1 /* SHA256.swift */; };
 		29792A3B1C77CCF500E1B3D1 /* HistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29792A3A1C77CCF500E1B3D1 /* HistoryRequest.swift */; };
 		29792A3D1C77CFCB00E1B3D1 /* HistoryReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29792A3C1C77CFCB00E1B3D1 /* HistoryReply.swift */; };
+		29DEEBB11C7C647900C6FEB9 /* SocketIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEEBB01C7C647900C6FEB9 /* SocketIn.swift */; };
+		29DEEBB31C7C648E00C6FEB9 /* SocketOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEEBB21C7C648E00C6FEB9 /* SocketOut.swift */; };
+		29DEEBB51C7D212000C6FEB9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEEBB41C7D212000C6FEB9 /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,9 @@
 		29792A381C77433100E1B3D1 /* SHA256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
 		29792A3A1C77CCF500E1B3D1 /* HistoryRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryRequest.swift; sourceTree = "<group>"; };
 		29792A3C1C77CFCB00E1B3D1 /* HistoryReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryReply.swift; sourceTree = "<group>"; };
+		29DEEBB01C7C647900C6FEB9 /* SocketIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIn.swift; path = "Network Layer/SocketIn.swift"; sourceTree = "<group>"; };
+		29DEEBB21C7C648E00C6FEB9 /* SocketOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketOut.swift; sourceTree = "<group>"; };
+		29DEEBB41C7D212000C6FEB9 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,10 @@
 		293EE2AE1C747CEE0030DFCE /* iSwiftCore */ = {
 			isa = PBXGroup;
 			children = (
+				29DEEBAF1C7C634200C6FEB9 /* Utilities */,
+				29DEEBA61C7C630400C6FEB9 /* Network Layer */,
+				29DEEBAC1C7C631700C6FEB9 /* Authentication Layer */,
+				29DEEBAD1C7C632400C6FEB9 /* Message Layer */,
 				29792A341C7732E500E1B3D1 /* Helpers */,
 				29792A271C77230400E1B3D1 /* Protocols */,
 				29792A1D1C7720CA00E1B3D1 /* Messages */,
@@ -191,6 +201,37 @@
 				29792A381C77433100E1B3D1 /* SHA256.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		29DEEBA61C7C630400C6FEB9 /* Network Layer */ = {
+			isa = PBXGroup;
+			children = (
+				29DEEBB01C7C647900C6FEB9 /* SocketIn.swift */,
+				29DEEBB21C7C648E00C6FEB9 /* SocketOut.swift */,
+			);
+			name = "Network Layer";
+			sourceTree = "<group>";
+		};
+		29DEEBAC1C7C631700C6FEB9 /* Authentication Layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Authentication Layer";
+			sourceTree = "<group>";
+		};
+		29DEEBAD1C7C632400C6FEB9 /* Message Layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Message Layer";
+			sourceTree = "<group>";
+		};
+		29DEEBAF1C7C634200C6FEB9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				29DEEBB41C7D212000C6FEB9 /* Queue.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,7 +371,10 @@
 				29792A2F1C77298F00E1B3D1 /* ExecuteReply.swift in Sources */,
 				29792A361C7732F100E1B3D1 /* NSDate+String.swift in Sources */,
 				29792A391C77433100E1B3D1 /* SHA256.swift in Sources */,
+				29DEEBB31C7C648E00C6FEB9 /* SocketOut.swift in Sources */,
+				29DEEBB11C7C647900C6FEB9 /* SocketIn.swift in Sources */,
 				293EE2C01C747D810030DFCE /* Kernel.swift in Sources */,
+				29DEEBB51C7D212000C6FEB9 /* Queue.swift in Sources */,
 				293EE31A1C748F110030DFCE /* Connection.swift in Sources */,
 				29792A2B1C7727C300E1B3D1 /* Contentable.swift in Sources */,
 			);

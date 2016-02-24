@@ -15,9 +15,20 @@ enum MessageType: String {
     case ExecuteReply = "execute_reply"
     case HistoryRequest = "history_request"
     case HistoryReply = "history_reply"
+    
+    var constructFunc: ([String: AnyObject]) -> Contentable? {
+        if let associatedClass = NSClassFromString("\(self)") as? Contentable.Type {
+            return associatedClass.fromJSON
+        }
+        return { _ in nil }
+    }
 }
 
 struct Message {
+    static let Delimiter = "<IDS|MSG>"
+    
+    let signature: String
+    
     /// The message header contains a pair of unique identifiers for the
     /// originating session and the actual message id, in addition to the
     /// username for the process that generated the message.  This is useful in
@@ -36,6 +47,17 @@ struct Message {
     /// The actual content of the message must be a dict, whose structure
     /// depends on the message type.
     let content: Contentable
+    
+    let extraBlobs: [String]
+    
+    init(signature: String = "", header: Header, parentHeader: Header?, metadata: [String: AnyObject], content: Contentable, extraBlobs: [String] = []) {
+        self.signature = signature
+        self.header = header
+        self.parentHeader = parentHeader
+        self.metadata = metadata
+        self.content = content
+        self.extraBlobs = extraBlobs
+    }
     
     func toSHA256(key: String) -> String {
         let digestor = SHA256(key: key)
