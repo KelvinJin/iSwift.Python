@@ -100,7 +100,13 @@ extension String {
                 
             }
             
-            try startShell(context, connection: connection)
+            dispatch_async(socketQueue) {
+                do {
+                    try self.startShell(context, connection: connection)
+                } catch let e {
+                    print(e)
+                }
+            }
             
         } catch let e {
             Logger.Info.print("Socket creation error: \(e)")

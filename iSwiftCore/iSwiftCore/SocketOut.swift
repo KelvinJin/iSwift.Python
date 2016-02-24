@@ -21,7 +21,7 @@ class SocketOut {
                     message.header.toJSONString(), message.parentHeader?.toJSONString() ?? "{}", "{}",
                     message.content.toJSONString()]
                 for (index, dataStr) in messageBlobs.enumerate() {
-                    try socket.sendString(dataStr, mode: index == messageBlobs.count - 1 ? .DontWait : .SendMore)
+                    try socket.sendString(dataStr, mode: index == messageBlobs.count - 1 ? [] : .SendMore)
                 }
             } catch let e {
                 Logger.Info.print(e)
