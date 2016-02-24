@@ -9,6 +9,13 @@
 import Foundation
 
 class MessageProcessor {
+    static var executionCount: Int {
+        _executionCount += 1
+        return _executionCount
+    }
+    
+    static var _executionCount: Int = 0
+    
     static func run(inMessageQueue: BlockingQueue<Message>, outMessageQueue: BlockingQueue<Message>) {
         while true {
             let message = inMessageQueue.take()
@@ -27,7 +34,7 @@ class MessageProcessor {
             case .HistoryReply:
                 replyContent = HistoryReply(history: [])
             case .ExecuteReply:
-                replyContent = ExecuteReply(status: .Ok, executionCount: 0, userExpressions: nil)
+                replyContent = ExecuteReply(status: .Ok, executionCount: executionCount, userExpressions: nil)
             default:
                 continue
             }

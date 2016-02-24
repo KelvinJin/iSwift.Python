@@ -117,10 +117,6 @@ extension String {
         }
     }
     
-    private func processMessage(header: [String: AnyObject]) {
-        
-    }
-    
     private func createSocket(context: Context, transport: TransportType, ip: String, port: Int, type: SocketType, dataHandler: (data: [Int8], socket: Socket) -> Void) throws {
         // Create a heart beat connection that will reply anything it receives.
         let socket = try context.socket(type)

@@ -21,7 +21,8 @@ class REPLWrapper {
     private var communicator: NSFileHandle!
     private var state: REPLState = .Prompt
     private var lastOutput: String = ""
-    private var semaphore = dispatch_semaphore_create(0)
+    private var outputSemaphore = dispatch_semaphore_create(0)
+    private var promptSemaphore = dispatch_semaphore_create(0)
     
     init(command: String, prompt: String, continuePrompt: String) throws {
         self.command = command
@@ -42,6 +43,8 @@ class REPLWrapper {
             name: NSTaskDidTerminateNotification, object: nil)
         
         task.launch()
+        
+        expectPrompts()
     }
     
     func didReceivedData(notification: NSNotification) {
@@ -65,27 +68,54 @@ class REPLWrapper {
         
     }
     
-    func sendLine(code: String) -> String {
+    func runCommand(cmd: String, wait: Bool = true) -> String {
+        // Ready for output.
+        state = .Output
+        
+        sendLine(cmd)
+        
+        if wait {
+            // Ready for Prompt
+            state = .Prompt
+            
+            expectPrompts()
+        }
+        
+        dispatch_semaphore_wait(outputSemaphore, DISPATCH_TIME_FOREVER)
+        
+        // Reset the output.
+        let _lastOutput = lastOutput
+        lastOutput = ""
+        
+        // Next input
+        state = .Input
+        
+        return _lastOutput
+    }
+    
+    func expectPrompts() {
+        expect([prompt, continuePrompt])
+    }
+    
+    private func sendLine(code: String) {
         if let codeData = code.dataUsingEncoding(NSUTF8StringEncoding) {
             communicator.writeData(codeData)
         }
-        
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-        
-        return lastOutput
     }
     
-    func expect(pattern: String) {
+    private func expect(patterns: [String]) {
+        dispatch_semaphore_wait(promptSemaphore, DISPATCH_TIME_FOREVER)
         
+        return
     }
     
     private func didReceivedOutput(output: String) {
-        lastOutput = output
+        lastOutput += output
         
-        dispatch_semaphore_signal(semaphore)
+        dispatch_semaphore_signal(outputSemaphore)
     }
     
     private func didReceivedPrompt() {
-        
+        dispatch_semaphore_signal(promptSemaphore)
     }
 }
