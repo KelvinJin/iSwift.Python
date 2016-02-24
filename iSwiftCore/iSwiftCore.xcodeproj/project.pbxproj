@@ -12,6 +12,11 @@
 		293EE2D01C747E710030DFCE /* SwiftZMQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293EE2CB1C747E6C0030DFCE /* SwiftZMQ.framework */; };
 		293EE31A1C748F110030DFCE /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293EE3191C748F110030DFCE /* Connection.swift */; };
 		293EE3241C7499620030DFCE /* CommandLine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293EE3211C74995B0030DFCE /* CommandLine.framework */; };
+		29474CFD1C7D7376001471F3 /* Synchronize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29474CFC1C7D7376001471F3 /* Synchronize.swift */; };
+		29474D041C7D780A001471F3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29474D031C7D780A001471F3 /* Decoder.swift */; };
+		29474D061C7D79E9001471F3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29474D051C7D79E9001471F3 /* Encoder.swift */; };
+		29474D081C7D7B0A001471F3 /* MessageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29474D071C7D7B0A001471F3 /* MessageProcessor.swift */; };
+		29474D0A1C7D7ECF001471F3 /* TaskFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29474D091C7D7ECF001471F3 /* TaskFactory.swift */; };
 		29792A241C77212B00E1B3D1 /* KernelInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29792A231C77212B00E1B3D1 /* KernelInfoRequest.swift */; };
 		29792A261C77215A00E1B3D1 /* KernelInfoReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29792A251C77215A00E1B3D1 /* KernelInfoReply.swift */; };
 		29792A291C77233E00E1B3D1 /* JSONConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29792A281C77233E00E1B3D1 /* JSONConvertable.swift */; };
@@ -75,6 +80,11 @@
 		293EE2C41C747E6C0030DFCE /* SwiftZMQ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftZMQ.xcodeproj; path = ../SwiftZMQ/SwiftZMQ.xcodeproj; sourceTree = "<group>"; };
 		293EE3191C748F110030DFCE /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		293EE31B1C74995B0030DFCE /* CommandLine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommandLine.xcodeproj; path = ../CommandLine/CommandLine.xcodeproj; sourceTree = "<group>"; };
+		29474CFC1C7D7376001471F3 /* Synchronize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronize.swift; sourceTree = "<group>"; };
+		29474D031C7D780A001471F3 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		29474D051C7D79E9001471F3 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		29474D071C7D7B0A001471F3 /* MessageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageProcessor.swift; sourceTree = "<group>"; };
+		29474D091C7D7ECF001471F3 /* TaskFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFactory.swift; sourceTree = "<group>"; };
 		29792A231C77212B00E1B3D1 /* KernelInfoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KernelInfoRequest.swift; sourceTree = "<group>"; };
 		29792A251C77215A00E1B3D1 /* KernelInfoReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KernelInfoReply.swift; sourceTree = "<group>"; };
 		29792A281C77233E00E1B3D1 /* JSONConvertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConvertable.swift; sourceTree = "<group>"; };
@@ -215,6 +225,8 @@
 		29DEEBAC1C7C631700C6FEB9 /* Authentication Layer */ = {
 			isa = PBXGroup;
 			children = (
+				29474D031C7D780A001471F3 /* Decoder.swift */,
+				29474D051C7D79E9001471F3 /* Encoder.swift */,
 			);
 			name = "Authentication Layer";
 			sourceTree = "<group>";
@@ -222,6 +234,7 @@
 		29DEEBAD1C7C632400C6FEB9 /* Message Layer */ = {
 			isa = PBXGroup;
 			children = (
+				29474D071C7D7B0A001471F3 /* MessageProcessor.swift */,
 			);
 			name = "Message Layer";
 			sourceTree = "<group>";
@@ -230,6 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				29DEEBB41C7D212000C6FEB9 /* Queue.swift */,
+				29474CFC1C7D7376001471F3 /* Synchronize.swift */,
+				29474D091C7D7ECF001471F3 /* TaskFactory.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -360,9 +375,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29474D081C7D7B0A001471F3 /* MessageProcessor.swift in Sources */,
 				29792A331C77313200E1B3D1 /* Header.swift in Sources */,
 				29792A241C77212B00E1B3D1 /* KernelInfoRequest.swift in Sources */,
 				29792A2D1C77296800E1B3D1 /* ExecuteRequest.swift in Sources */,
+				29474D041C7D780A001471F3 /* Decoder.swift in Sources */,
 				29792A3B1C77CCF500E1B3D1 /* HistoryRequest.swift in Sources */,
 				29792A291C77233E00E1B3D1 /* JSONConvertable.swift in Sources */,
 				29792A3D1C77CFCB00E1B3D1 /* HistoryReply.swift in Sources */,
@@ -371,11 +388,14 @@
 				29792A2F1C77298F00E1B3D1 /* ExecuteReply.swift in Sources */,
 				29792A361C7732F100E1B3D1 /* NSDate+String.swift in Sources */,
 				29792A391C77433100E1B3D1 /* SHA256.swift in Sources */,
+				29474D061C7D79E9001471F3 /* Encoder.swift in Sources */,
 				29DEEBB31C7C648E00C6FEB9 /* SocketOut.swift in Sources */,
+				29474D0A1C7D7ECF001471F3 /* TaskFactory.swift in Sources */,
 				29DEEBB11C7C647900C6FEB9 /* SocketIn.swift in Sources */,
 				293EE2C01C747D810030DFCE /* Kernel.swift in Sources */,
 				29DEEBB51C7D212000C6FEB9 /* Queue.swift in Sources */,
 				293EE31A1C748F110030DFCE /* Connection.swift in Sources */,
+				29474CFD1C7D7376001471F3 /* Synchronize.swift in Sources */,
 				29792A2B1C7727C300E1B3D1 /* Contentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

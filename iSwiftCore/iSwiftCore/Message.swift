@@ -15,19 +15,16 @@ enum MessageType: String {
     case ExecuteReply = "execute_reply"
     case HistoryRequest = "history_request"
     case HistoryReply = "history_reply"
-    
-    var constructFunc: ([String: AnyObject]) -> Contentable? {
-        if let associatedClass = NSClassFromString("\(self)") as? Contentable.Type {
-            return associatedClass.fromJSON
-        }
-        return { _ in nil }
+
+    var replyType: MessageType? {
+        return MessageType(rawValue: self.rawValue.stringByReplacingOccurrencesOfString("request", withString: "reply"))
     }
 }
 
 struct Message {
     static let Delimiter = "<IDS|MSG>"
     
-    let signature: String
+    var signature: String
     
     /// The message header contains a pair of unique identifiers for the
     /// originating session and the actual message id, in addition to the

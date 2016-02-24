@@ -11,7 +11,7 @@ import SwiftZMQ
 
 class SocketIn {
     
-    func run(socket: Socket, inputMessageQueue: BlockingQueue<Message>) {
+    static func run(socket: Socket, outMessageQueue: BlockingQueue<Message>) {
         // Make sure the socket has been running.
         guard let _ = try? socket.getFileDescriptor() else { return }
         
@@ -29,8 +29,8 @@ class SocketIn {
                             // Let's finish the previous one.
                             let message = try constructMessage(messageBlobs)
                             
-                            // Added to the queuq
-                            try inputMessageQueue.add(message)
+                            // Added to the queue
+                            outMessageQueue.add(message)
                         } catch let e {
                             Logger.Info.print(e)
                         }
@@ -40,9 +40,7 @@ class SocketIn {
                         
                         // Start reading...
                         startReading = true
-                    }
-                    
-                    if startReading {
+                    } else if startReading {
                         messageBlobs.append(recv)
                     }
                 }
@@ -52,7 +50,7 @@ class SocketIn {
         }
     }
     
-    private func constructMessage(messageBlobs: [String]) throws -> Message {
+    static private func constructMessage(messageBlobs: [String]) throws -> Message {
         // Make sure there are enough blobs.
         guard messageBlobs.count >= 5 else {
             throw Error.SocketError("message blobs are not enough.")
@@ -62,28 +60,48 @@ class SocketIn {
         let signature = messageBlobs[0]
         
         // Must have a header.
+        Logger.Debug.print("Parsing header...")
         let header = try parse(messageBlobs[1], converter: Header.fromJSON)
         
         // May not have a parent header.
+        Logger.Debug.print("Parsing parent header...")
         let parentHeaderStr = try parse(messageBlobs[2]) { $0 }
         let parentHeader = Header.fromJSON(parentHeaderStr)
         
         // Can be an empty metadata.
+        Logger.Debug.print("Parsing metadata...")
         let metadata = try parse(messageBlobs[3]) { $0 }
         
         // For content, it's a bit complicated.
+        Logger.Debug.print("Parsing content...")
         
-        let content = try parse(messageBlobs[4], converter: header.msgType.constructFunc)
+        // FIXME: Rewrite the following codes.
+        let content: Contentable
+        switch header.msgType {
+        case .KernelInfoRequest:
+            content = try parse(messageBlobs[4], converter: KernelInfoRequest.fromJSON)
+        case .KernelInfoReply:
+            content = try parse(messageBlobs[4], converter: KernelInfoReply.fromJSON)
+        case .ExecuteRequest:
+            content = try parse(messageBlobs[4], converter: ExecuteRequest.fromJSON)
+        case .ExecuteReply:
+            content = try parse(messageBlobs[4], converter: ExecuteReply.fromJSON)
+        case .HistoryRequest:
+            content = try parse(messageBlobs[4], converter: HistoryRequest.fromJSON)
+        case .HistoryReply:
+            content = try parse(messageBlobs[4], converter: HistoryReply.fromJSON)
+        }
         
         // The rest would be extra blobs.
+        Logger.Debug.print("Parsing extraBlobs...")
         let extraBlobs: [String] = messageBlobs.count >= 6 ? messageBlobs.suffixFrom(5).flatMap { $0 } : []
         
         return Message(signature: signature, header: header, parentHeader: parentHeader, metadata: metadata, content: content, extraBlobs: extraBlobs)
     }
     
-    private func parse<T>(str: String, converter: (([String: AnyObject]) -> T?)) throws -> T {
+    static private func parse<T>(str: String, converter: (([String: AnyObject]) -> T?)) throws -> T {
         guard let json = str.toJSON(), re = converter(json) else {
-            throw Error.SocketError("Parse string to json failed. \(str)")
+            throw Error.SocketError("Parse \(str) to object \(T.self) failed.")
         }
         
         return re
