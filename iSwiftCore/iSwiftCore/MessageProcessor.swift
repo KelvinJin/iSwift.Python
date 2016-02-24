@@ -27,7 +27,7 @@ class MessageProcessor {
             case .HistoryReply:
                 replyContent = HistoryReply(history: [])
             case .ExecuteReply:
-                replyContent = ExecuteReply(status: .Ok, executionCount: 1, userExpressions: nil)
+                replyContent = ExecuteReply(status: .Ok, executionCount: 0, userExpressions: nil)
             default:
                 continue
             }

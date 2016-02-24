@@ -17,13 +17,19 @@ class SocketIn {
         
         // Now, let's wait for the message identifier.
         var messageBlobs: [String] = []
-        var startReading = false
         
         while true {
             do {
                 if let recv = try socket.receiveString() {
                     if recv == Message.Delimiter {
                         // It seems to be a new message coming.
+                        
+                        // FIXME: Find a way to make this read extra blobs.
+                        for _ in 0..<5 {
+                            if let data = try socket.receiveString() {
+                                messageBlobs.append(data)
+                            }
+                        }
                         
                         do {
                             // Let's finish the previous one.
@@ -36,12 +42,7 @@ class SocketIn {
                         }
                         
                         // Remove the previous blobs.
-                        messageBlobs.removeAll(keepCapacity: true)
-                        
-                        // Start reading...
-                        startReading = true
-                    } else if startReading {
-                        messageBlobs.append(recv)
+                        messageBlobs.removeAll()
                     }
                 }
             } catch let e {
