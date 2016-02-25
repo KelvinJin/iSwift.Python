@@ -15,13 +15,18 @@ enum MessageType: String {
     case ExecuteReply = "execute_reply"
     case HistoryRequest = "history_request"
     case HistoryReply = "history_reply"
+    case IsCompleteRequest = "is_complete_request"
+    case IsCompleteReply = "is_complete_reply"
+    case ExecuteResult = "execute_result"
+    case ExecuteInput = "execute_input"
+    case Status = "status"
 
     var replyType: MessageType? {
         return MessageType(rawValue: self.rawValue.stringByReplacingOccurrencesOfString("request", withString: "reply"))
     }
 }
 
-struct Message {
+class Message {
     static let Delimiter = "<IDS|MSG>"
     
     var signature: String

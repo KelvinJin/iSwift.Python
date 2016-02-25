@@ -21,6 +21,7 @@ enum Logger: Int {
     case Debug = 10
     case Info = 20
     case Warning = 30
+    case Critical = 40
     
     func print(items: Any..., file: String = __FILE__, function: String = __FUNCTION__, line: Int = __LINE__) {
         if rawValue >= loggerLevel {
@@ -94,6 +95,16 @@ extension String {
             }
             
             let ioPubSocket = try createSocket(context, transport: connection.transport, ip: connection.ip, port: connection.iopubPort, type: .Pub)
+            
+            NSNotificationCenter.defaultCenter().addObserverForName("IOPubNotification", object: nil, queue: NSOperationQueue(), usingBlock: { (notification) -> Void in
+                if let resultMessage = notification.userInfo?["message"] as? Message {
+                    do {
+                        try ioPubSocket.sendMessage(resultMessage)
+                    } catch let e {
+                        Logger.Critical.print(e)
+                    }
+                }
+            })
             
             try createSocket(context, transport: connection.transport, ip: connection.ip, port: connection.stdinPort, type: SocketType.Router) { data, socket in
                 Logger.Info.print("Received stdin data.")

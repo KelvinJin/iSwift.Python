@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29236D291C7E9B5000E9F131 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29236D281C7E9B5000E9F131 /* Status.swift */; };
+		29236D301C7E9BB500E9F131 /* ExecuteInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29236D2F1C7E9BB500E9F131 /* ExecuteInput.swift */; };
 		293EE2B01C747CEE0030DFCE /* iSwiftCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 293EE2AF1C747CEE0030DFCE /* iSwiftCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		293EE2C01C747D810030DFCE /* Kernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293EE2BF1C747D810030DFCE /* Kernel.swift */; };
 		293EE2D01C747E710030DFCE /* SwiftZMQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293EE2CB1C747E6C0030DFCE /* SwiftZMQ.framework */; };
@@ -33,6 +35,11 @@
 		29944AD71C7DCEA0008A1919 /* iSwiftCore-Objective-C.h in Headers */ = {isa = PBXBuildFile; fileRef = 29944AD61C7DCE67008A1919 /* iSwiftCore-Objective-C.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29944AD91C7DD010008A1919 /* REPLWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944AD81C7DD010008A1919 /* REPLWrapper.swift */; };
 		29944ADB1C7DD52E008A1919 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944ADA1C7DD52E008A1919 /* Regex.swift */; };
+		29944ADD1C7E768B008A1919 /* IsCompleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944ADC1C7E768B008A1919 /* IsCompleteRequest.swift */; };
+		29944AE01C7E76C2008A1919 /* IsCompleteReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944ADF1C7E76C2008A1919 /* IsCompleteReply.swift */; };
+		29944AE21C7E7EBE008A1919 /* Socket+Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944AE11C7E7EBE008A1919 /* Socket+Message.swift */; };
+		29944AE41C7E812D008A1919 /* ExecuteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944AE31C7E812D008A1919 /* ExecuteResult.swift */; };
+		29944AEA1C7E92A6008A1919 /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944AE91C7E92A6008A1919 /* String+Trim.swift */; };
 		29DEEBB11C7C647900C6FEB9 /* SocketIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEEBB01C7C647900C6FEB9 /* SocketIn.swift */; };
 		29DEEBB31C7C648E00C6FEB9 /* SocketOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEEBB21C7C648E00C6FEB9 /* SocketOut.swift */; };
 		29DEEBB51C7D212000C6FEB9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEEBB41C7D212000C6FEB9 /* Queue.swift */; };
@@ -77,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29236D281C7E9B5000E9F131 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		29236D2F1C7E9BB500E9F131 /* ExecuteInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteInput.swift; sourceTree = "<group>"; };
 		293EE2AC1C747CEE0030DFCE /* iSwiftCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iSwiftCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		293EE2AF1C747CEE0030DFCE /* iSwiftCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSwiftCore.h; sourceTree = "<group>"; };
 		293EE2B11C747CEE0030DFCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,6 +115,11 @@
 		29944AD61C7DCE67008A1919 /* iSwiftCore-Objective-C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSwiftCore-Objective-C.h"; sourceTree = "<group>"; };
 		29944AD81C7DD010008A1919 /* REPLWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REPLWrapper.swift; sourceTree = "<group>"; };
 		29944ADA1C7DD52E008A1919 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		29944ADC1C7E768B008A1919 /* IsCompleteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsCompleteRequest.swift; sourceTree = "<group>"; };
+		29944ADF1C7E76C2008A1919 /* IsCompleteReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsCompleteReply.swift; sourceTree = "<group>"; };
+		29944AE11C7E7EBE008A1919 /* Socket+Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Socket+Message.swift"; sourceTree = "<group>"; };
+		29944AE31C7E812D008A1919 /* ExecuteResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteResult.swift; sourceTree = "<group>"; };
+		29944AE91C7E92A6008A1919 /* String+Trim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Trim.swift"; sourceTree = "<group>"; };
 		29DEEBB01C7C647900C6FEB9 /* SocketIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIn.swift; path = "Network Layer/SocketIn.swift"; sourceTree = "<group>"; };
 		29DEEBB21C7C648E00C6FEB9 /* SocketOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketOut.swift; sourceTree = "<group>"; };
 		29DEEBB41C7D212000C6FEB9 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -200,6 +214,11 @@
 				29792A321C77313200E1B3D1 /* Header.swift */,
 				29792A3A1C77CCF500E1B3D1 /* HistoryRequest.swift */,
 				29792A3C1C77CFCB00E1B3D1 /* HistoryReply.swift */,
+				29944ADC1C7E768B008A1919 /* IsCompleteRequest.swift */,
+				29944ADF1C7E76C2008A1919 /* IsCompleteReply.swift */,
+				29944AE31C7E812D008A1919 /* ExecuteResult.swift */,
+				29236D281C7E9B5000E9F131 /* Status.swift */,
+				29236D2F1C7E9BB500E9F131 /* ExecuteInput.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -216,8 +235,10 @@
 		29792A341C7732E500E1B3D1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				29944AE91C7E92A6008A1919 /* String+Trim.swift */,
 				29792A351C7732F100E1B3D1 /* NSDate+String.swift */,
 				29792A381C77433100E1B3D1 /* SHA256.swift */,
+				29944AE11C7E7EBE008A1919 /* Socket+Message.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -396,17 +417,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29944AE41C7E812D008A1919 /* ExecuteResult.swift in Sources */,
 				29474D081C7D7B0A001471F3 /* MessageProcessor.swift in Sources */,
 				29792A331C77313200E1B3D1 /* Header.swift in Sources */,
 				29792A241C77212B00E1B3D1 /* KernelInfoRequest.swift in Sources */,
 				29792A2D1C77296800E1B3D1 /* ExecuteRequest.swift in Sources */,
 				29474D041C7D780A001471F3 /* Decoder.swift in Sources */,
+				29944AE01C7E76C2008A1919 /* IsCompleteReply.swift in Sources */,
 				29792A3B1C77CCF500E1B3D1 /* HistoryRequest.swift in Sources */,
+				29944AEA1C7E92A6008A1919 /* String+Trim.swift in Sources */,
+				29944ADD1C7E768B008A1919 /* IsCompleteRequest.swift in Sources */,
 				29944AD51C7DCCD8008A1919 /* NSTask+PTY.swift in Sources */,
 				29792A291C77233E00E1B3D1 /* JSONConvertable.swift in Sources */,
 				29792A3D1C77CFCB00E1B3D1 /* HistoryReply.swift in Sources */,
 				29792A311C7730F900E1B3D1 /* Message.swift in Sources */,
+				29944AE21C7E7EBE008A1919 /* Socket+Message.swift in Sources */,
 				29792A261C77215A00E1B3D1 /* KernelInfoReply.swift in Sources */,
+				29236D301C7E9BB500E9F131 /* ExecuteInput.swift in Sources */,
 				29792A2F1C77298F00E1B3D1 /* ExecuteReply.swift in Sources */,
 				29792A361C7732F100E1B3D1 /* NSDate+String.swift in Sources */,
 				29792A391C77433100E1B3D1 /* SHA256.swift in Sources */,
@@ -420,6 +447,7 @@
 				29944ADB1C7DD52E008A1919 /* Regex.swift in Sources */,
 				293EE31A1C748F110030DFCE /* Connection.swift in Sources */,
 				29474CFD1C7D7376001471F3 /* Synchronize.swift in Sources */,
+				29236D291C7E9B5000E9F131 /* Status.swift in Sources */,
 				29792A2B1C7727C300E1B3D1 /* Contentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

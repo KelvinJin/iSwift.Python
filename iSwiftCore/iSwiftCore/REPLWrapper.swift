@@ -14,7 +14,7 @@ enum REPLState {
     case Output
 }
 
-class REPLWrapper {
+class REPLWrapper: NSObject {
     private let command: String
     private var prompt: String
     private var continuePrompt: String
@@ -24,25 +24,22 @@ class REPLWrapper {
     private var outputSemaphore = dispatch_semaphore_create(0)
     private var promptSemaphore = dispatch_semaphore_create(0)
     
+    private let runModes = [NSDefaultRunLoopMode, NSModalPanelRunLoopMode, NSEventTrackingRunLoopMode]
+    
     init(command: String, prompt: String, continuePrompt: String) throws {
         self.command = command
         self.prompt = prompt
         self.continuePrompt = continuePrompt
         
-        let task = NSTask()
-        task.launchPath = command
+        super.init()
         
-        communicator = try task.masterSideOfPTY()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceivedData:",
-            name: NSFileHandleDataAvailableNotification, object: nil)
-        
-        communicator.waitForDataInBackgroundAndNotify()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "taskDidTerminated:",
-            name: NSTaskDidTerminateNotification, object: nil)
-        
-        task.launch()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { [unowned self] in
+            do {
+                try self.launchTask(command)
+            } catch let e {
+                Logger.Critical.print(e)
+            }
+        }
         
         expectPrompts()
     }
@@ -60,31 +57,28 @@ class REPLWrapper {
             // Check if this is a valid prompt string.
             if dataStr.match(prompt) {
                 didReceivedPrompt()
+            } else {
+                didReceivedOutput(dataStr)
             }
         }
+        
+        communicator.waitForDataInBackgroundAndNotifyForModes(runModes)
     }
     
     func taskDidTerminated(notification: NSNotification) {
-        
     }
     
     func runCommand(cmd: String, wait: Bool = true) -> String {
-        // Ready for output.
-        state = .Output
-        
         sendLine(cmd)
-        
-        if wait {
-            // Ready for Prompt
-            state = .Prompt
-            
-            expectPrompts()
-        }
         
         dispatch_semaphore_wait(outputSemaphore, DISPATCH_TIME_FOREVER)
         
+        if wait {
+            expectPrompts()
+        }
+        
         // Reset the output.
-        let _lastOutput = lastOutput
+        let _lastOutput = lastOutput.componentsSeparatedByString("\n").filter { !$0.isEmpty }.last ?? ""
         lastOutput = ""
         
         // Next input
@@ -94,11 +88,40 @@ class REPLWrapper {
     }
     
     func expectPrompts() {
+        // Ready for Prompt
+        state = .Prompt
+        
         expect([prompt, continuePrompt])
     }
     
-    private func sendLine(code: String) {
+    private func launchTask(command: String) throws {
+        let task = NSTask()
+        task.launchPath = command
+        
+        communicator = try task.masterSideOfPTY()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceivedData:",
+            name: NSFileHandleDataAvailableNotification, object: nil)
+        
+        communicator.waitForDataInBackgroundAndNotifyForModes(runModes)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "taskDidTerminated:",
+            name: NSTaskDidTerminateNotification, object: nil)
+        
+        task.launch()
+        
+        task.waitUntilExit()
+    }
+    
+    private func sendLine(var code: String) {
+        if !code.hasSuffix("\n") {
+            code += "\n"
+        }
+        
         if let codeData = code.dataUsingEncoding(NSUTF8StringEncoding) {
+            // Ready for output.
+            state = .Output
+            
             communicator.writeData(codeData)
         }
     }

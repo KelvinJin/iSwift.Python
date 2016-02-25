@@ -81,16 +81,14 @@ class SocketIn {
         switch header.msgType {
         case .KernelInfoRequest:
             content = try parse(messageBlobs[4], converter: KernelInfoRequest.fromJSON)
-        case .KernelInfoReply:
-            content = try parse(messageBlobs[4], converter: KernelInfoReply.fromJSON)
         case .ExecuteRequest:
             content = try parse(messageBlobs[4], converter: ExecuteRequest.fromJSON)
-        case .ExecuteReply:
-            content = try parse(messageBlobs[4], converter: ExecuteReply.fromJSON)
         case .HistoryRequest:
             content = try parse(messageBlobs[4], converter: HistoryRequest.fromJSON)
-        case .HistoryReply:
-            content = try parse(messageBlobs[4], converter: HistoryReply.fromJSON)
+        case .IsCompleteRequest:
+            content = try parse(messageBlobs[4], converter: IsCompleteRequest.fromJSON)
+        default:
+            throw Error.SocketError("Undefined message content.")
         }
         
         // The rest would be extra blobs.
