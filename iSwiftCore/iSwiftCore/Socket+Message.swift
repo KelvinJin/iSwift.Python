@@ -9,6 +9,7 @@
 import Foundation
 import SwiftZMQ
 
+// We can only send message one by one. This is for sure.
 private let SocketSendQueue = dispatch_queue_create("iSwiftCore.Socket", nil)
 
 extension Socket {

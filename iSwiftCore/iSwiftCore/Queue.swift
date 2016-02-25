@@ -8,12 +8,13 @@
 
 import Foundation
 
+// By default, this will be a FIFO queue.
 class BlockingQueue<Element> {
-    private var dataSource: [Element]
+    private var dataSource: ConcurrentArray<Element>
     private let dataSemaphore: dispatch_semaphore_t
     
     init() {
-        dataSource = [Element]()
+        dataSource = ConcurrentArray<Element>()
         dataSemaphore = dispatch_semaphore_create(0)
     }
     

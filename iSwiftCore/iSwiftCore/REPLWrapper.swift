@@ -42,6 +42,9 @@ class REPLWrapper: NSObject {
         }
         
         expectPrompts()
+        
+        // Clear the welcome message.
+        lastOutput = ""
     }
     
     func didReceivedData(notification: NSNotification) {
@@ -78,7 +81,7 @@ class REPLWrapper: NSObject {
         }
         
         // Reset the output.
-        let _lastOutput = lastOutput.componentsSeparatedByString("\n").filter { !$0.isEmpty }.last ?? ""
+        let _lastOutput = lastOutput
         lastOutput = ""
         
         // Next input

@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSTask {
-    func masterSideOfPTY() throws -> NSFileHandle {
+    func masterSideOfPTY(echoOn: Bool = false) throws -> NSFileHandle {
         var fdMaster: Int32 = 0
         var fdSlave: Int32 = 0
         
@@ -23,6 +23,10 @@ extension NSTask {
         c_fcntl(fdMaster, F_SETFD, FD_CLOEXEC)
         c_fcntl(fdSlave, F_SETFD, FD_CLOEXEC)
         
+        if !echoOn {
+            try turnOffEcho(fdMaster)
+        }
+        
         let masterHandle = NSFileHandle(fileDescriptor: fdMaster, closeOnDealloc: true)
         let slaveHandle = NSFileHandle(fileDescriptor: fdSlave, closeOnDealloc: true)
         
@@ -30,5 +34,22 @@ extension NSTask {
         standardOutput = slaveHandle
         
         return masterHandle
+    }
+    
+    private func turnOffEcho(fd: Int32) throws {
+        // Code from http://man7.org/tlpi/code/online/book/tty/no_echo.c.html
+        
+        /* Retrieve current terminal settings, turn echoing off */
+        var tp = termios()
+        
+        if (tcgetattr(fd, &tp) == -1) {
+            throw Error.GeneralError("tcgetattr error.")
+        }
+        
+        /* ECHO off, other bits unchanged */
+        tp.c_lflag &= ~UInt(ECHO);
+        if (tcsetattr(fd, TCSAFLUSH, &tp) == -1) {
+            throw Error.GeneralError("tcsetattr error.")
+        }
     }
 }
