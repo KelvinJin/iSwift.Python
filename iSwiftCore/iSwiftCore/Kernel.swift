@@ -40,7 +40,7 @@ extension String {
     }
     
     func toJSON() -> [String: AnyObject]? {
-        guard let data = dataUsingEncoding(NSASCIIStringEncoding),
+        guard let data = dataUsingEncoding(NSUTF8StringEncoding),
             json = (try? NSJSONSerialization.JSONObjectWithData(data, options: [])) as? [String: AnyObject] else {
                 Logger.Info.print("Convert to JSON failed.")
                 return nil

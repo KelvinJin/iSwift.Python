@@ -13,8 +13,8 @@ class Encoder {
         while true {
             // Take some message from the queue and check whether the signature matches the message.
             var message = inMessageQueue.take()
-            let encodedMessage = encode(key, message: &message)
-            outMessageQueue.add(encodedMessage)
+            encode(key, message: &message)
+            outMessageQueue.add(message)
         }
     }
     

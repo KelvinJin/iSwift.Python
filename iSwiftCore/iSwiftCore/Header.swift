@@ -18,7 +18,7 @@ struct Header: JSONConvertable {
     let session: String
     
     /// ISO 8601 timestamp for when the message is created
-    let date: NSDate
+    let date: NSDate?
     
     /// All recognized message type strings are listed below
     let msgType: MessageType
@@ -27,7 +27,7 @@ struct Header: JSONConvertable {
     let version: String
     
     init(msgId: String = NSUUID().UUIDString, username: String = "kernel",
-        session: String, date: NSDate = NSDate(), msgType: MessageType, version: String = "5.0") {
+        session: String, date: NSDate? = NSDate(), msgType: MessageType, version: String = "5.0") {
         self.msgId = msgId
         self.username = username
         self.session = session
@@ -37,23 +37,27 @@ struct Header: JSONConvertable {
     }
     
     func toJSON() -> [String : AnyObject] {
-        return ["msg_id": msgId,
+        var base = ["msg_id": msgId,
             "username": username,
             "session": session,
-            "date": date.toISO8601String(),
             "msg_type": msgType.rawValue,
             "version": version]
+        if let date = date {
+            base["date"] = date.toISO8601String()
+        }
+        return base
     }
     
     static func fromJSON(json: [String : AnyObject]) -> Header? {
         guard let msgId = json["msg_id"] as? String,
             username = json["username"] as? String,
             session = json["session"] as? String,
-            date = (json["date"] as? String)?.toISO8601Date(),
             msgTypeStr = json["msg_type"] as? String,
             msgType = MessageType(rawValue: msgTypeStr),
             version = json["version"] as? String
             else { return nil }
+        
+        let date = (json["date"] as? String)?.toISO8601Date()
         
         return Header(msgId: msgId, username: username, session: session, date: date, msgType: msgType, version: version)
     }

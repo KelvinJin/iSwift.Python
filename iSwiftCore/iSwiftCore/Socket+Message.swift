@@ -16,6 +16,9 @@ extension Socket {
     func sendMessage(message: Message) throws {
         dispatch_async(SocketSendQueue) { [weak self] () -> Void in
             do {
+                Logger.Debug.print("Sending message header \(message.header)")
+                Logger.Debug.print("Sending message signature \(message.signature)")
+                Logger.Debug.print("Sending message content \(message.content)")
                 let messageBlobs = [message.header.session, Message.Delimiter, message.signature,
                     message.header.toJSONString(), message.parentHeader?.toJSONString() ?? "{}", "{}",
                     message.content.toJSONString()]

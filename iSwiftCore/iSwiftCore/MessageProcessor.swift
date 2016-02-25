@@ -44,7 +44,8 @@ class MessageProcessor {
                     execute(executeRequest.code, executionCount: _currentExecutionCount, parentHeader: requestHeader, metadata: [:])
                 }
             case .IsCompleteReply:
-                replyContent = IsCompleteReply(status: "complete", indent: nil)
+                let content = message.content as! IsCompleteRequest
+                replyContent = IsCompleteReply(status: content.code.isCompletedCode() ? "complete" : "incomplete", indent: nil)
             default:
                 continue
             }

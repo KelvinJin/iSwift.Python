@@ -68,7 +68,7 @@ class Message {
         
         digestor.update(header.toBytes())
         digestor.update(parentHeader?.toBytes() ?? emptyDict.toBytes())
-        digestor.update(emptyDict.toBytes())
+        digestor.update(metadata.toBytes())
         digestor.update(content.toBytes())
         
         return digestor.hexDigest()

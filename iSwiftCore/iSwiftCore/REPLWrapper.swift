@@ -42,9 +42,6 @@ class REPLWrapper: NSObject {
         }
         
         expectPrompts()
-        
-        // Clear the welcome message.
-        lastOutput = ""
     }
     
     func didReceivedData(notification: NSNotification) {
@@ -71,23 +68,28 @@ class REPLWrapper: NSObject {
     func taskDidTerminated(notification: NSNotification) {
     }
     
+    // The command might be a multiline command.
     func runCommand(cmd: String, wait: Bool = true) -> String {
-        sendLine(cmd)
-        
-        dispatch_semaphore_wait(outputSemaphore, DISPATCH_TIME_FOREVER)
-        
-        if wait {
-            expectPrompts()
-        }
-        
-        // Reset the output.
-        let _lastOutput = lastOutput
+        // Clear the previous output.
         lastOutput = ""
+        
+        for line in cmd.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()) {
+            // Get rid of the new line stuff which make no sense.
+            let trimmedLine = line.trim()
+            guard !trimmedLine.isEmpty else { continue }
+            
+            sendLine(cmd)
+            dispatch_semaphore_wait(outputSemaphore, DISPATCH_TIME_FOREVER)
+            
+            if wait {
+                expectPrompts()
+            }
+        }
         
         // Next input
         state = .Input
         
-        return _lastOutput
+        return lastOutput
     }
     
     func expectPrompts() {

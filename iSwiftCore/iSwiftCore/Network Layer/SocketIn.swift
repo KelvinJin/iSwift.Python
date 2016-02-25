@@ -21,12 +21,14 @@ class SocketIn {
         while true {
             do {
                 if let recv = try socket.receiveString() {
+                    Logger.Debug.print("Get socket string: \(recv)")
                     if recv == Message.Delimiter {
                         // It seems to be a new message coming.
                         
                         // FIXME: Find a way to make this read extra blobs.
                         for _ in 0..<5 {
                             if let data = try socket.receiveString() {
+                                Logger.Debug.print("Get socket string: \(data)")
                                 messageBlobs.append(data)
                             }
                         }
@@ -99,8 +101,13 @@ class SocketIn {
     }
     
     static private func parse<T>(str: String, converter: (([String: AnyObject]) -> T?)) throws -> T {
-        guard let json = str.toJSON(), re = converter(json) else {
-            throw Error.SocketError("Parse \(str) to object \(T.self) failed.")
+        guard let json = str.toJSON() else {
+            print(str)
+            throw Error.SocketError("Parse \(str) to JSON failed.")
+        }
+        
+        guard let re = converter(json) else {
+            throw Error.SocketError("Parse JSON to \(T.self) failed.")
         }
         
         return re
