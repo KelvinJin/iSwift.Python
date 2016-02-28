@@ -3,7 +3,7 @@
 	url = https://github.com/SwiftBond/Bond.git
 [submodule "External/SwiftZMQ"]
 	path = External/SwiftZMQ
-	url = https://github.com/Zewo/SwiftZMQ.git
+url=https://github.com/KelvinJin/SwiftZMQ.git
 [submodule "External/CommandLine"]
 	path = External/CommandLine
 	url = https://github.com/jatoben/CommandLine.git
