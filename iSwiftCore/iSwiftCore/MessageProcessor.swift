@@ -18,7 +18,7 @@ class MessageProcessor {
     
     static var session: String = ""
     
-    private static let replWrapper = try! REPLWrapper(command: "/usr/bin/swift", prompt: "\\d+>", continuePrompt: "...")
+    private static let replWrapper = try! REPLWrapper(command: "/usr/bin/swift", prompt: "^\\s*\\d+>\\s*$", continuePrompt: "^\\s*\\d+\\.\\s*$")
     
     static func run(inMessageQueue: BlockingQueue<Message>, outMessageQueue: BlockingQueue<Message>) {
         while true {

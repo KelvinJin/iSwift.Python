@@ -43,6 +43,7 @@
 		29944AE21C7E7EBE008A1919 /* Socket+Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944AE11C7E7EBE008A1919 /* Socket+Message.swift */; };
 		29944AE41C7E812D008A1919 /* ExecuteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944AE31C7E812D008A1919 /* ExecuteResult.swift */; };
 		29944AEA1C7E92A6008A1919 /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29944AE91C7E92A6008A1919 /* String+Trim.swift */; };
+		299A78391C82E3DE006AE024 /* Bond.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 299A78071C82E2CB006AE024 /* Bond.framework */; };
 		29DEEBB11C7C647900C6FEB9 /* SocketIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEEBB01C7C647900C6FEB9 /* SocketIn.swift */; };
 		29DEEBB31C7C648E00C6FEB9 /* SocketOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEEBB21C7C648E00C6FEB9 /* SocketOut.swift */; };
 		29DEEBB51C7D212000C6FEB9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEEBB41C7D212000C6FEB9 /* Queue.swift */; };
@@ -83,6 +84,55 @@
 			proxyType = 2;
 			remoteGlobalIDString = 5D06884E19674D7D00BBFAAC;
 			remoteInfo = CommandLineTests;
+		};
+		299A78061C82E2CB006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 69491BAE1A7C217100A13B6B;
+			remoteInfo = Bond;
+		};
+		299A78081C82E2CB006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 69491BB91A7C217100A13B6B;
+			remoteInfo = BondTests;
+		};
+		299A780A1C82E2CB006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCA979691A83C3A100DD4A30;
+			remoteInfo = BondOSX;
+		};
+		299A780C1C82E2CB006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCA979731A83C3A200DD4A30;
+			remoteInfo = BondOSXTests;
+		};
+		299A780E1C82E2CB006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03ACB4FE1AB555D6001B3E64;
+			remoteInfo = iOSAppForTesting;
+		};
+		299A78101C82E2CB006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B56989C21BD8A00C00927A6B;
+			remoteInfo = BondtvOS;
+		};
+		299A78121C82E2CB006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5616DBB1BD8A39E0016CCB4;
+			remoteInfo = tvOSAppForTesting;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -126,6 +176,7 @@
 		29944AE11C7E7EBE008A1919 /* Socket+Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Socket+Message.swift"; sourceTree = "<group>"; };
 		29944AE31C7E812D008A1919 /* ExecuteResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteResult.swift; sourceTree = "<group>"; };
 		29944AE91C7E92A6008A1919 /* String+Trim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Trim.swift"; sourceTree = "<group>"; };
+		299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bond.xcodeproj; path = ../Bond/Bond.xcodeproj; sourceTree = "<group>"; };
 		29DEEBB01C7C647900C6FEB9 /* SocketIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIn.swift; path = "Network Layer/SocketIn.swift"; sourceTree = "<group>"; };
 		29DEEBB21C7C648E00C6FEB9 /* SocketOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketOut.swift; sourceTree = "<group>"; };
 		29DEEBB41C7D212000C6FEB9 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -136,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				299A78391C82E3DE006AE024 /* Bond.framework in Frameworks */,
 				293EE3241C7499620030DFCE /* CommandLine.framework in Frameworks */,
 				293EE2D01C747E710030DFCE /* SwiftZMQ.framework in Frameworks */,
 			);
@@ -184,6 +236,7 @@
 		293EE2C31C747E620030DFCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */,
 				293EE31B1C74995B0030DFCE /* CommandLine.xcodeproj */,
 				293EE2C41C747E6C0030DFCE /* SwiftZMQ.xcodeproj */,
 			);
@@ -258,6 +311,20 @@
 				29944AD81C7DD010008A1919 /* REPLWrapper.swift */,
 			);
 			name = Pty;
+			sourceTree = "<group>";
+		};
+		299A77FD1C82E2CA006AE024 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				299A78071C82E2CB006AE024 /* Bond.framework */,
+				299A78091C82E2CB006AE024 /* BondTests.xctest */,
+				299A780B1C82E2CB006AE024 /* Bond.framework */,
+				299A780D1C82E2CB006AE024 /* BondOSXTests.xctest */,
+				299A780F1C82E2CB006AE024 /* iOSAppForTesting.app */,
+				299A78111C82E2CB006AE024 /* Bond.framework */,
+				299A78131C82E2CB006AE024 /* tvOSAppForTesting.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		29DEEBA61C7C630400C6FEB9 /* Network Layer */ = {
@@ -358,6 +425,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 299A77FD1C82E2CA006AE024 /* Products */;
+					ProjectRef = 299A77FC1C82E2CA006AE024 /* Bond.xcodeproj */;
+				},
+				{
 					ProductGroup = 293EE31C1C74995B0030DFCE /* Products */;
 					ProjectRef = 293EE31B1C74995B0030DFCE /* CommandLine.xcodeproj */;
 				},
@@ -407,6 +478,55 @@
 			fileType = wrapper.cfbundle;
 			path = CommandLineTests.xctest;
 			remoteRef = 293EE3221C74995B0030DFCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78071C82E2CB006AE024 /* Bond.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bond.framework;
+			remoteRef = 299A78061C82E2CB006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78091C82E2CB006AE024 /* BondTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BondTests.xctest;
+			remoteRef = 299A78081C82E2CB006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A780B1C82E2CB006AE024 /* Bond.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bond.framework;
+			remoteRef = 299A780A1C82E2CB006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A780D1C82E2CB006AE024 /* BondOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BondOSXTests.xctest;
+			remoteRef = 299A780C1C82E2CB006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A780F1C82E2CB006AE024 /* iOSAppForTesting.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iOSAppForTesting.app;
+			remoteRef = 299A780E1C82E2CB006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78111C82E2CB006AE024 /* Bond.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bond.framework;
+			remoteRef = 299A78101C82E2CB006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78131C82E2CB006AE024 /* tvOSAppForTesting.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = tvOSAppForTesting.app;
+			remoteRef = 299A78121C82E2CB006AE024 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

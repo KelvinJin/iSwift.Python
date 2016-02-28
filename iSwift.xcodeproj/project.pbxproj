@@ -12,6 +12,7 @@
 		293EE2DD1C747E900030DFCE /* SwiftZMQ.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 293EE2D81C747E860030DFCE /* SwiftZMQ.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		293EE2E21C7482D50030DFCE /* iSwiftCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 293EE2BD1C747D200030DFCE /* iSwiftCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		293EE32E1C7499750030DFCE /* CommandLine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 293EE32B1C74996C0030DFCE /* CommandLine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		299A783D1C82E3F8006AE024 /* Bond.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 299A78291C82E2ED006AE024 /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,62 @@
 			remoteGlobalIDString = 5D06884219674D7D00BBFAAC;
 			remoteInfo = CommandLine;
 		};
+		299A78241C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 69491BAE1A7C217100A13B6B;
+			remoteInfo = Bond;
+		};
+		299A78261C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 69491BB91A7C217100A13B6B;
+			remoteInfo = BondTests;
+		};
+		299A78281C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCA979691A83C3A100DD4A30;
+			remoteInfo = BondOSX;
+		};
+		299A782A1C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCA979731A83C3A200DD4A30;
+			remoteInfo = BondOSXTests;
+		};
+		299A782C1C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03ACB4FE1AB555D6001B3E64;
+			remoteInfo = iOSAppForTesting;
+		};
+		299A782E1C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B56989C21BD8A00C00927A6B;
+			remoteInfo = BondtvOS;
+		};
+		299A78301C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5616DBB1BD8A39E0016CCB4;
+			remoteInfo = tvOSAppForTesting;
+		};
+		299A783A1C82E3EB006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DCA979681A83C3A100DD4A30;
+			remoteInfo = BondOSX;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -113,6 +170,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				299A783D1C82E3F8006AE024 /* Bond.framework in CopyFiles */,
 				293EE32E1C7499750030DFCE /* CommandLine.framework in CopyFiles */,
 				293EE2DD1C747E900030DFCE /* SwiftZMQ.framework in CopyFiles */,
 				293EE2E21C7482D50030DFCE /* iSwiftCore.framework in CopyFiles */,
@@ -129,6 +187,7 @@
 		293EE2B81C747D200030DFCE /* iSwiftCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iSwiftCore.xcodeproj; path = iSwiftCore/iSwiftCore.xcodeproj; sourceTree = "<group>"; };
 		293EE2D11C747E860030DFCE /* SwiftZMQ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftZMQ.xcodeproj; path = SwiftZMQ/SwiftZMQ.xcodeproj; sourceTree = "<group>"; };
 		293EE3251C74996C0030DFCE /* CommandLine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommandLine.xcodeproj; path = CommandLine/CommandLine.xcodeproj; sourceTree = "<group>"; };
+		299A781A1C82E2ED006AE024 /* Bond.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bond.xcodeproj; path = Bond/Bond.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +246,7 @@
 		293EE2B71C747D0B0030DFCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				299A781A1C82E2ED006AE024 /* Bond.xcodeproj */,
 				293EE3251C74996C0030DFCE /* CommandLine.xcodeproj */,
 				293EE2D11C747E860030DFCE /* SwiftZMQ.xcodeproj */,
 				293EE2B81C747D200030DFCE /* iSwiftCore.xcodeproj */,
@@ -221,6 +281,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		299A781B1C82E2ED006AE024 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				299A78251C82E2ED006AE024 /* Bond.framework */,
+				299A78271C82E2ED006AE024 /* BondTests.xctest */,
+				299A78291C82E2ED006AE024 /* Bond.framework */,
+				299A782B1C82E2ED006AE024 /* BondOSXTests.xctest */,
+				299A782D1C82E2ED006AE024 /* iOSAppForTesting.app */,
+				299A782F1C82E2ED006AE024 /* Bond.framework */,
+				299A78311C82E2ED006AE024 /* tvOSAppForTesting.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,6 +309,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				299A783B1C82E3EB006AE024 /* PBXTargetDependency */,
 				293EE3301C74997B0030DFCE /* PBXTargetDependency */,
 				293EE3181C748D1A0030DFCE /* PBXTargetDependency */,
 				293EE2E81C7485160030DFCE /* PBXTargetDependency */,
@@ -292,6 +367,10 @@
 			productRefGroup = 293EE2661C747A640030DFCE /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 299A781B1C82E2ED006AE024 /* Products */;
+					ProjectRef = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+				},
 				{
 					ProductGroup = 293EE3261C74996C0030DFCE /* Products */;
 					ProjectRef = 293EE3251C74996C0030DFCE /* CommandLine.xcodeproj */;
@@ -356,6 +435,55 @@
 			remoteRef = 293EE32C1C74996C0030DFCE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		299A78251C82E2ED006AE024 /* Bond.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bond.framework;
+			remoteRef = 299A78241C82E2ED006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78271C82E2ED006AE024 /* BondTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BondTests.xctest;
+			remoteRef = 299A78261C82E2ED006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78291C82E2ED006AE024 /* Bond.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bond.framework;
+			remoteRef = 299A78281C82E2ED006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A782B1C82E2ED006AE024 /* BondOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BondOSXTests.xctest;
+			remoteRef = 299A782A1C82E2ED006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A782D1C82E2ED006AE024 /* iOSAppForTesting.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iOSAppForTesting.app;
+			remoteRef = 299A782C1C82E2ED006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A782F1C82E2ED006AE024 /* Bond.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bond.framework;
+			remoteRef = 299A782E1C82E2ED006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78311C82E2ED006AE024 /* tvOSAppForTesting.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = tvOSAppForTesting.app;
+			remoteRef = 299A78301C82E2ED006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -406,6 +534,11 @@
 			isa = PBXTargetDependency;
 			name = CommandLine;
 			targetProxy = 293EE32F1C74997B0030DFCE /* PBXContainerItemProxy */;
+		};
+		299A783B1C82E3EB006AE024 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BondOSX;
+			targetProxy = 299A783A1C82E3EB006AE024 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -552,6 +685,7 @@
 				293EE26E1C747A640030DFCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		293EE2761C747AE80030DFCE /* Build configuration list for PBXNativeTarget "iSwiftBundle" */ = {
 			isa = XCConfigurationList;
@@ -560,6 +694,7 @@
 				293EE2781C747AE80030DFCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

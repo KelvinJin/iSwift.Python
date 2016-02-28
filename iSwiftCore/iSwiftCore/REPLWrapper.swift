@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Bond
 
 enum REPLState {
     case Prompt
@@ -19,10 +20,8 @@ class REPLWrapper: NSObject {
     private var prompt: String
     private var continuePrompt: String
     private var communicator: NSFileHandle!
-    private var state: REPLState = .Prompt
     private var lastOutput: String = ""
-    private var outputSemaphore = dispatch_semaphore_create(0)
-    private var promptSemaphore = dispatch_semaphore_create(0)
+    private var consoleOutput = Observable<String>("")
     
     private let runModes = [NSDefaultRunLoopMode, NSModalPanelRunLoopMode, NSEventTrackingRunLoopMode]
     
@@ -41,7 +40,7 @@ class REPLWrapper: NSObject {
             }
         }
         
-        expectPrompts()
+        expect([prompt])
     }
     
     func didReceivedData(notification: NSNotification) {
@@ -49,16 +48,28 @@ class REPLWrapper: NSObject {
         
         guard let dataStr = NSString(data: data, encoding: NSUTF8StringEncoding) as? String else { return }
         
-        switch state {
-        case .Output, .Input:
-            // Although we get some input when we're expecting output, we'll still pass it through.
-            didReceivedOutput(dataStr)
-        case .Prompt:
-            // Check if this is a valid prompt string.
-            if dataStr.match(prompt) {
-                didReceivedPrompt()
+        // For every data the console gives, it can be a new prompt or a continue prompt or an actual output.
+        // We'll need to deal with it accordingly.
+        if dataStr.match(prompt, options: [.AnchorsMatchLines]) {
+            // It's a new prompt.
+        } else if dataStr.match(continuePrompt, options: [.AnchorsMatchLines]) {
+            // It's a continue prompt. It means the console is expecting more data.
+        } else {
+            // It's a raw output.
+        }
+        
+        // Sometimes, the output will contain multiline string. We can't deal with them once. We
+        // need to separater them, so that the prompt is dealt in time and the raw output will be captured.
+        let lines = dataStr.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+        
+        for (index, line) in lines.enumerate() {
+            guard !line.isEmpty else { continue }
+            
+            // Don't remember to add a new line to compensate the loss of the non last line.
+            if index == lines.count - 1 && !dataStr.hasSuffix("\n") {
+                consoleOutput.next(line)
             } else {
-                didReceivedOutput(dataStr)
+                consoleOutput.next("\(line)\n")
             }
         }
         
@@ -69,34 +80,30 @@ class REPLWrapper: NSObject {
     }
     
     // The command might be a multiline command.
-    func runCommand(cmd: String, wait: Bool = true) -> String {
+    func runCommand(cmd: String) -> String {
         // Clear the previous output.
-        lastOutput = ""
+        var currentOutput = ""
+        
+        // We'll observe the output stream and make sure all non-prompts gets recorded into output.
         
         for line in cmd.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()) {
-            // Get rid of the new line stuff which make no sense.
-            let trimmedLine = line.trim()
-            guard !trimmedLine.isEmpty else { continue }
+            // Send out this line for execution.
+            sendLine(line)
             
-            sendLine(cmd)
-            dispatch_semaphore_wait(outputSemaphore, DISPATCH_TIME_FOREVER)
-            
-            if wait {
-                expectPrompts()
+            // For each line, the console will either give back
+            // an output (might empty) + an prompt or an continue
+            // prompt.
+            expect([prompt, continuePrompt]) { output in
+                currentOutput += output
             }
         }
         
-        // Next input
-        state = .Input
+        lastOutput = currentOutput
         
+        // It doesn't matter whether there's any output or not.
+        // If the command triggered no output then we'll just return
+        // empty string.
         return lastOutput
-    }
-    
-    func expectPrompts() {
-        // Ready for Prompt
-        state = .Prompt
-        
-        expect([prompt, continuePrompt])
     }
     
     private func launchTask(command: String) throws {
@@ -118,32 +125,32 @@ class REPLWrapper: NSObject {
         task.waitUntilExit()
     }
     
-    private func sendLine(var code: String) {
-        if !code.hasSuffix("\n") {
-            code += "\n"
-        }
+    private func sendLine(code: String) {
+        // Get rid of the new line stuff which make no sense.
+        var trimmedLine = code.trim()
         
-        if let codeData = code.dataUsingEncoding(NSUTF8StringEncoding) {
-            // Ready for output.
-            state = .Output
-            
+        // Only one new line character is needed. And we need
+        // this new line if the trimmed code is empty.
+        trimmedLine += "\n"
+        
+        if let codeData = trimmedLine.dataUsingEncoding(NSUTF8StringEncoding) {
             communicator.writeData(codeData)
         }
     }
     
-    private func expect(patterns: [String]) {
+    private func expect(patterns: [String], otherHandler: (String) -> Void = { _ in }) {
+        let promptSemaphore = dispatch_semaphore_create(0)
+        
+        let dispose = consoleOutput.observeNew {(output) -> Void in
+            for pattern in patterns where output.match(pattern) {
+                dispatch_semaphore_signal(promptSemaphore)
+                return
+            }
+            otherHandler(output)
+        }
+        
         dispatch_semaphore_wait(promptSemaphore, DISPATCH_TIME_FOREVER)
         
-        return
-    }
-    
-    private func didReceivedOutput(output: String) {
-        lastOutput += output
-        
-        dispatch_semaphore_signal(outputSemaphore)
-    }
-    
-    private func didReceivedPrompt() {
-        dispatch_semaphore_signal(promptSemaphore)
+        dispose.dispose()
     }
 }

@@ -23,17 +23,10 @@ struct Regex {
     
     var regex: NSRegularExpression?
     
-    init(pattern: String, expressionOptions: NSRegularExpressionOptions, matchingOptions: NSMatchingOptions) {
+    init(pattern: String, expressionOptions: NSRegularExpressionOptions = NSRegularExpressionOptions(), matchingOptions: NSMatchingOptions = NSMatchingOptions()) {
         self.pattern = pattern
         self.expressionOptions = expressionOptions
         self.matchingOptions = matchingOptions
-        updateRegex()
-    }
-    
-    init(pattern: String) {
-        self.pattern = pattern
-        expressionOptions = NSRegularExpressionOptions()
-        matchingOptions = NSMatchingOptions()
         updateRegex()
     }
     
@@ -53,8 +46,8 @@ extension String {
         return false
     }
     
-    func match(patternString: String) -> Bool {
-        return self.matchRegex(Regex(pattern: patternString))
+    func match(patternString: String, options: NSRegularExpressionOptions = [.AnchorsMatchLines]) -> Bool {
+        return self.matchRegex(Regex(pattern: patternString, expressionOptions: options))
     }
     
     func replaceRegex(pattern: Regex, template: String) -> String {
