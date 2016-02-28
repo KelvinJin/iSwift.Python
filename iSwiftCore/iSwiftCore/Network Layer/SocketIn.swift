@@ -89,6 +89,8 @@ class SocketIn {
             content = try parse(messageBlobs[4], converter: HistoryRequest.fromJSON)
         case .IsCompleteRequest:
             content = try parse(messageBlobs[4], converter: IsCompleteRequest.fromJSON)
+        case .ShutdownRequest:
+            content = try parse(messageBlobs[4], converter: ShutdownRequest.fromJSON)
         default:
             throw Error.SocketError("Undefined message content.")
         }

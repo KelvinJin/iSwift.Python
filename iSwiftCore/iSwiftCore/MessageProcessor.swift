@@ -46,6 +46,18 @@ class MessageProcessor {
             case .IsCompleteReply:
                 let content = message.content as! IsCompleteRequest
                 replyContent = IsCompleteReply(status: content.code.isCompletedCode() ? "complete" : "incomplete", indent: nil)
+            case .ShutdownReply:
+                let content = message.content as! ShutdownRequest
+                
+                Logger.Info.print("Shutting down...")
+                
+                do {
+                    try replWrapper.shutdown(content.restart)
+                } catch let e {
+                    Logger.Critical.print(e)
+                }
+                
+                replyContent = ShutdownReply(restart: content.restart)
             default:
                 continue
             }

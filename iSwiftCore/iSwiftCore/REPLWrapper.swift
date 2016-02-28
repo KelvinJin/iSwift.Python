@@ -22,6 +22,7 @@ class REPLWrapper: NSObject {
     private var communicator: NSFileHandle!
     private var lastOutput: String = ""
     private var consoleOutput = Observable<String>("")
+    private var currentTask: NSTask!
     
     private let runModes = [NSDefaultRunLoopMode, NSModalPanelRunLoopMode, NSEventTrackingRunLoopMode]
     
@@ -32,15 +33,7 @@ class REPLWrapper: NSObject {
         
         super.init()
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { [unowned self] in
-            do {
-                try self.launchTask(command)
-            } catch let e {
-                Logger.Critical.print(e)
-            }
-        }
-        
-        expect([prompt])
+        try launchTaskInBackground()
     }
     
     func didReceivedData(notification: NSNotification) {
@@ -106,11 +99,33 @@ class REPLWrapper: NSObject {
         return lastOutput
     }
     
-    private func launchTask(command: String) throws {
-        let task = NSTask()
-        task.launchPath = command
+    func shutdown(restart: Bool) throws {
+        // For now, we just terminate it forcely. We should probably
+        // use :quit in the future.
+        currentTask.terminate()
         
-        communicator = try task.masterSideOfPTY()
+        if restart {
+            try launchTaskInBackground()
+        }
+    }
+    
+    private func launchTaskInBackground() throws {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { [unowned self] in
+            do {
+                try self.launchTask()
+            } catch let e {
+                Logger.Critical.print(e)
+            }
+        }
+        
+        expect([prompt])
+    }
+    
+    private func launchTask() throws {
+        currentTask = NSTask()
+        currentTask.launchPath = command
+        
+        communicator = try currentTask.masterSideOfPTY()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceivedData:",
             name: NSFileHandleDataAvailableNotification, object: nil)
@@ -120,9 +135,9 @@ class REPLWrapper: NSObject {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "taskDidTerminated:",
             name: NSTaskDidTerminateNotification, object: nil)
         
-        task.launch()
+        currentTask.launch()
         
-        task.waitUntilExit()
+        currentTask.waitUntilExit()
     }
     
     private func sendLine(code: String) {

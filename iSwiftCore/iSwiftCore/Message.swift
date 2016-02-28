@@ -20,6 +20,8 @@ enum MessageType: String {
     case ExecuteResult = "execute_result"
     case ExecuteInput = "execute_input"
     case Status = "status"
+    case ShutdownRequest = "shutdown_request"
+    case ShutdownReply = "shutdown_reply"
 
     var replyType: MessageType? {
         return MessageType(rawValue: self.rawValue.stringByReplacingOccurrencesOfString("request", withString: "reply"))
