@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A2223D5E74A45FCB4E3D910811B3FFFD49AC9394",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CBF5F70D4EDC8047BC75C25236002B0EA7F6B15B" : 0,
+    "D78924967B5ECB0A1D20E197FAB93ACBFA47F0D1" : 0,
+    "4492AA7787944F4C721D0D5FB3BD3B2D431F41FC" : 0,
+    "A2223D5E74A45FCB4E3D910811B3FFFD49AC9394" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "70D91D95-4610-472D-BBBC-D0114B05F114",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CBF5F70D4EDC8047BC75C25236002B0EA7F6B15B" : "iSwift\/External\/CommandLine\/",
+    "D78924967B5ECB0A1D20E197FAB93ACBFA47F0D1" : "iSwift\/External\/Bond\/",
+    "4492AA7787944F4C721D0D5FB3BD3B2D431F41FC" : "iSwift\/External\/SwiftZMQ\/",
+    "A2223D5E74A45FCB4E3D910811B3FFFD49AC9394" : "iSwift\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "iSwift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iSwift.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Zewo\/SwiftZMQ.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4492AA7787944F4C721D0D5FB3BD3B2D431F41FC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:KelvinJin\/iSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A2223D5E74A45FCB4E3D910811B3FFFD49AC9394"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jatoben\/CommandLine.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CBF5F70D4EDC8047BC75C25236002B0EA7F6B15B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftBond\/Bond.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D78924967B5ECB0A1D20E197FAB93ACBFA47F0D1"
+    }
+  ]
+}

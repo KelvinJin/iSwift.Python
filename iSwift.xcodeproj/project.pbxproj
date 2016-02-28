@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		293EE2691C747A640030DFCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 293EE2681C747A640030DFCE /* main.m */; };
 		293EE27C1C747B4E0030DFCE /* iSwift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 293EE2651C747A640030DFCE /* iSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		293EE2DD1C747E900030DFCE /* SwiftZMQ.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 293EE2D81C747E860030DFCE /* SwiftZMQ.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		293EE2E21C7482D50030DFCE /* iSwiftCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 293EE2BD1C747D200030DFCE /* iSwiftCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		293EE32E1C7499750030DFCE /* CommandLine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 293EE32B1C74996C0030DFCE /* CommandLine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		299A783D1C82E3F8006AE024 /* Bond.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 299A78291C82E2ED006AE024 /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		299A78771C82FFD2006AE024 /* Bond.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 299A786A1C82FFB3006AE024 /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		299A78A51C830099006AE024 /* SwiftZMQ.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 299A789E1C830084006AE024 /* SwiftZMQ.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		299A78A61C83009F006AE024 /* CommandLine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 299A78881C83006F006AE024 /* CommandLine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,27 +30,6 @@
 			remoteGlobalIDString = 293EE2AC1C747CEE0030DFCE;
 			remoteInfo = iSwiftCore;
 		};
-		293EE2D71C747E860030DFCE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 293EE2D11C747E860030DFCE /* SwiftZMQ.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B00ED9E01BD8A2CD00BBBBAE;
-			remoteInfo = SwiftZMQ;
-		};
-		293EE2D91C747E860030DFCE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 293EE2D11C747E860030DFCE /* SwiftZMQ.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B00ED9EA1BD8A2CD00BBBBAE;
-			remoteInfo = SwiftZMQTests;
-		};
-		293EE2DB1C747E860030DFCE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 293EE2D11C747E860030DFCE /* SwiftZMQ.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 539074071C50484E00E8F9C6;
-			remoteInfo = SwiftZMQ_iOS;
-		};
 		293EE2E71C7485160030DFCE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 293EE2B81C747D200030DFCE /* iSwiftCore.xcodeproj */;
@@ -58,89 +37,110 @@
 			remoteGlobalIDString = 293EE2AB1C747CEE0030DFCE;
 			remoteInfo = iSwiftCore;
 		};
-		293EE3171C748D1A0030DFCE /* PBXContainerItemProxy */ = {
+		299A78651C82FFB3006AE024 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 293EE2D11C747E860030DFCE /* SwiftZMQ.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B00ED9DF1BD8A2CD00BBBBAE;
-			remoteInfo = SwiftZMQ;
-		};
-		293EE32A1C74996C0030DFCE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 293EE3251C74996C0030DFCE /* CommandLine.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5D06884319674D7D00BBFAAC;
-			remoteInfo = CommandLine;
-		};
-		293EE32C1C74996C0030DFCE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 293EE3251C74996C0030DFCE /* CommandLine.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5D06884E19674D7D00BBFAAC;
-			remoteInfo = CommandLineTests;
-		};
-		293EE32F1C74997B0030DFCE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 293EE3251C74996C0030DFCE /* CommandLine.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5D06884219674D7D00BBFAAC;
-			remoteInfo = CommandLine;
-		};
-		299A78241C82E2ED006AE024 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			containerPortal = 299A785B1C82FFB3006AE024 /* Bond.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 69491BAE1A7C217100A13B6B;
 			remoteInfo = Bond;
 		};
-		299A78261C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+		299A78671C82FFB3006AE024 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			containerPortal = 299A785B1C82FFB3006AE024 /* Bond.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 69491BB91A7C217100A13B6B;
 			remoteInfo = BondTests;
 		};
-		299A78281C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+		299A78691C82FFB3006AE024 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			containerPortal = 299A785B1C82FFB3006AE024 /* Bond.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = DCA979691A83C3A100DD4A30;
 			remoteInfo = BondOSX;
 		};
-		299A782A1C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+		299A786B1C82FFB3006AE024 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			containerPortal = 299A785B1C82FFB3006AE024 /* Bond.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = DCA979731A83C3A200DD4A30;
 			remoteInfo = BondOSXTests;
 		};
-		299A782C1C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+		299A786D1C82FFB3006AE024 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			containerPortal = 299A785B1C82FFB3006AE024 /* Bond.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 03ACB4FE1AB555D6001B3E64;
 			remoteInfo = iOSAppForTesting;
 		};
-		299A782E1C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+		299A786F1C82FFB3006AE024 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			containerPortal = 299A785B1C82FFB3006AE024 /* Bond.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B56989C21BD8A00C00927A6B;
 			remoteInfo = BondtvOS;
 		};
-		299A78301C82E2ED006AE024 /* PBXContainerItemProxy */ = {
+		299A78711C82FFB3006AE024 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			containerPortal = 299A785B1C82FFB3006AE024 /* Bond.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B5616DBB1BD8A39E0016CCB4;
 			remoteInfo = tvOSAppForTesting;
 		};
-		299A783A1C82E3EB006AE024 /* PBXContainerItemProxy */ = {
+		299A78741C82FFCA006AE024 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+			containerPortal = 299A785B1C82FFB3006AE024 /* Bond.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = DCA979681A83C3A100DD4A30;
 			remoteInfo = BondOSX;
+		};
+		299A78871C83006F006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A78821C83006F006AE024 /* CommandLine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D06884319674D7D00BBFAAC;
+			remoteInfo = CommandLine;
+		};
+		299A78891C83006F006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A78821C83006F006AE024 /* CommandLine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D06884E19674D7D00BBFAAC;
+			remoteInfo = CommandLineTests;
+		};
+		299A789D1C830084006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A78971C830084006AE024 /* SwiftZMQ.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B00ED9E01BD8A2CD00BBBBAE;
+			remoteInfo = SwiftZMQ;
+		};
+		299A789F1C830084006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A78971C830084006AE024 /* SwiftZMQ.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B00ED9EA1BD8A2CD00BBBBAE;
+			remoteInfo = SwiftZMQTests;
+		};
+		299A78A11C830084006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A78971C830084006AE024 /* SwiftZMQ.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 539074071C50484E00E8F9C6;
+			remoteInfo = SwiftZMQ_iOS;
+		};
+		299A78A71C8300AD006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A78971C830084006AE024 /* SwiftZMQ.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B00ED9DF1BD8A2CD00BBBBAE;
+			remoteInfo = SwiftZMQ;
+		};
+		299A78A91C8300B0006AE024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 299A78821C83006F006AE024 /* CommandLine.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D06884219674D7D00BBFAAC;
+			remoteInfo = CommandLine;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -170,9 +170,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				299A783D1C82E3F8006AE024 /* Bond.framework in CopyFiles */,
-				293EE32E1C7499750030DFCE /* CommandLine.framework in CopyFiles */,
-				293EE2DD1C747E900030DFCE /* SwiftZMQ.framework in CopyFiles */,
+				299A78A61C83009F006AE024 /* CommandLine.framework in CopyFiles */,
+				299A78A51C830099006AE024 /* SwiftZMQ.framework in CopyFiles */,
+				299A78771C82FFD2006AE024 /* Bond.framework in CopyFiles */,
 				293EE2E21C7482D50030DFCE /* iSwiftCore.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,9 +185,9 @@
 		293EE2731C747AE80030DFCE /* iSwift.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSwift.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		293EE2751C747AE80030DFCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		293EE2B81C747D200030DFCE /* iSwiftCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iSwiftCore.xcodeproj; path = iSwiftCore/iSwiftCore.xcodeproj; sourceTree = "<group>"; };
-		293EE2D11C747E860030DFCE /* SwiftZMQ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftZMQ.xcodeproj; path = SwiftZMQ/SwiftZMQ.xcodeproj; sourceTree = "<group>"; };
-		293EE3251C74996C0030DFCE /* CommandLine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommandLine.xcodeproj; path = CommandLine/CommandLine.xcodeproj; sourceTree = "<group>"; };
-		299A781A1C82E2ED006AE024 /* Bond.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bond.xcodeproj; path = Bond/Bond.xcodeproj; sourceTree = "<group>"; };
+		299A785B1C82FFB3006AE024 /* Bond.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bond.xcodeproj; path = External/Bond/Bond.xcodeproj; sourceTree = "<group>"; };
+		299A78821C83006F006AE024 /* CommandLine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommandLine.xcodeproj; path = External/CommandLine/CommandLine.xcodeproj; sourceTree = "<group>"; };
+		299A78971C830084006AE024 /* SwiftZMQ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftZMQ.xcodeproj; path = External/SwiftZMQ/SwiftZMQ.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,9 +246,9 @@
 		293EE2B71C747D0B0030DFCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				299A781A1C82E2ED006AE024 /* Bond.xcodeproj */,
-				293EE3251C74996C0030DFCE /* CommandLine.xcodeproj */,
-				293EE2D11C747E860030DFCE /* SwiftZMQ.xcodeproj */,
+				299A78971C830084006AE024 /* SwiftZMQ.xcodeproj */,
+				299A78821C83006F006AE024 /* CommandLine.xcodeproj */,
+				299A785B1C82FFB3006AE024 /* Bond.xcodeproj */,
 				293EE2B81C747D200030DFCE /* iSwiftCore.xcodeproj */,
 			);
 			name = Frameworks;
@@ -262,35 +262,35 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		293EE2D21C747E860030DFCE /* Products */ = {
+		299A785C1C82FFB3006AE024 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				293EE2D81C747E860030DFCE /* SwiftZMQ.framework */,
-				293EE2DA1C747E860030DFCE /* SwiftZMQTests.xctest */,
-				293EE2DC1C747E860030DFCE /* SwiftZMQ_iOS.framework */,
+				299A78661C82FFB3006AE024 /* Bond.framework */,
+				299A78681C82FFB3006AE024 /* BondTests.xctest */,
+				299A786A1C82FFB3006AE024 /* Bond.framework */,
+				299A786C1C82FFB3006AE024 /* BondOSXTests.xctest */,
+				299A786E1C82FFB3006AE024 /* iOSAppForTesting.app */,
+				299A78701C82FFB3006AE024 /* Bond.framework */,
+				299A78721C82FFB3006AE024 /* tvOSAppForTesting.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		293EE3261C74996C0030DFCE /* Products */ = {
+		299A78831C83006F006AE024 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				293EE32B1C74996C0030DFCE /* CommandLine.framework */,
-				293EE32D1C74996C0030DFCE /* CommandLineTests.xctest */,
+				299A78881C83006F006AE024 /* CommandLine.framework */,
+				299A788A1C83006F006AE024 /* CommandLineTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		299A781B1C82E2ED006AE024 /* Products */ = {
+		299A78981C830084006AE024 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				299A78251C82E2ED006AE024 /* Bond.framework */,
-				299A78271C82E2ED006AE024 /* BondTests.xctest */,
-				299A78291C82E2ED006AE024 /* Bond.framework */,
-				299A782B1C82E2ED006AE024 /* BondOSXTests.xctest */,
-				299A782D1C82E2ED006AE024 /* iOSAppForTesting.app */,
-				299A782F1C82E2ED006AE024 /* Bond.framework */,
-				299A78311C82E2ED006AE024 /* tvOSAppForTesting.app */,
+				299A789E1C830084006AE024 /* SwiftZMQ.framework */,
+				299A78A01C830084006AE024 /* SwiftZMQTests.xctest */,
+				299A78A21C830084006AE024 /* SwiftZMQ_iOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -309,9 +309,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				299A783B1C82E3EB006AE024 /* PBXTargetDependency */,
-				293EE3301C74997B0030DFCE /* PBXTargetDependency */,
-				293EE3181C748D1A0030DFCE /* PBXTargetDependency */,
+				299A78AA1C8300B0006AE024 /* PBXTargetDependency */,
+				299A78A81C8300AD006AE024 /* PBXTargetDependency */,
+				299A78751C82FFCA006AE024 /* PBXTargetDependency */,
 				293EE2E81C7485160030DFCE /* PBXTargetDependency */,
 			);
 			name = iSwift;
@@ -368,20 +368,20 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 299A781B1C82E2ED006AE024 /* Products */;
-					ProjectRef = 299A781A1C82E2ED006AE024 /* Bond.xcodeproj */;
+					ProductGroup = 299A785C1C82FFB3006AE024 /* Products */;
+					ProjectRef = 299A785B1C82FFB3006AE024 /* Bond.xcodeproj */;
 				},
 				{
-					ProductGroup = 293EE3261C74996C0030DFCE /* Products */;
-					ProjectRef = 293EE3251C74996C0030DFCE /* CommandLine.xcodeproj */;
+					ProductGroup = 299A78831C83006F006AE024 /* Products */;
+					ProjectRef = 299A78821C83006F006AE024 /* CommandLine.xcodeproj */;
 				},
 				{
 					ProductGroup = 293EE2B91C747D200030DFCE /* Products */;
 					ProjectRef = 293EE2B81C747D200030DFCE /* iSwiftCore.xcodeproj */;
 				},
 				{
-					ProductGroup = 293EE2D21C747E860030DFCE /* Products */;
-					ProjectRef = 293EE2D11C747E860030DFCE /* SwiftZMQ.xcodeproj */;
+					ProductGroup = 299A78981C830084006AE024 /* Products */;
+					ProjectRef = 299A78971C830084006AE024 /* SwiftZMQ.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -400,88 +400,88 @@
 			remoteRef = 293EE2BC1C747D200030DFCE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		293EE2D81C747E860030DFCE /* SwiftZMQ.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftZMQ.framework;
-			remoteRef = 293EE2D71C747E860030DFCE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		293EE2DA1C747E860030DFCE /* SwiftZMQTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftZMQTests.xctest;
-			remoteRef = 293EE2D91C747E860030DFCE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		293EE2DC1C747E860030DFCE /* SwiftZMQ_iOS.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftZMQ_iOS.framework;
-			remoteRef = 293EE2DB1C747E860030DFCE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		293EE32B1C74996C0030DFCE /* CommandLine.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CommandLine.framework;
-			remoteRef = 293EE32A1C74996C0030DFCE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		293EE32D1C74996C0030DFCE /* CommandLineTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CommandLineTests.xctest;
-			remoteRef = 293EE32C1C74996C0030DFCE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		299A78251C82E2ED006AE024 /* Bond.framework */ = {
+		299A78661C82FFB3006AE024 /* Bond.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Bond.framework;
-			remoteRef = 299A78241C82E2ED006AE024 /* PBXContainerItemProxy */;
+			remoteRef = 299A78651C82FFB3006AE024 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		299A78271C82E2ED006AE024 /* BondTests.xctest */ = {
+		299A78681C82FFB3006AE024 /* BondTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = BondTests.xctest;
-			remoteRef = 299A78261C82E2ED006AE024 /* PBXContainerItemProxy */;
+			remoteRef = 299A78671C82FFB3006AE024 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		299A78291C82E2ED006AE024 /* Bond.framework */ = {
+		299A786A1C82FFB3006AE024 /* Bond.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Bond.framework;
-			remoteRef = 299A78281C82E2ED006AE024 /* PBXContainerItemProxy */;
+			remoteRef = 299A78691C82FFB3006AE024 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		299A782B1C82E2ED006AE024 /* BondOSXTests.xctest */ = {
+		299A786C1C82FFB3006AE024 /* BondOSXTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = BondOSXTests.xctest;
-			remoteRef = 299A782A1C82E2ED006AE024 /* PBXContainerItemProxy */;
+			remoteRef = 299A786B1C82FFB3006AE024 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		299A782D1C82E2ED006AE024 /* iOSAppForTesting.app */ = {
+		299A786E1C82FFB3006AE024 /* iOSAppForTesting.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = iOSAppForTesting.app;
-			remoteRef = 299A782C1C82E2ED006AE024 /* PBXContainerItemProxy */;
+			remoteRef = 299A786D1C82FFB3006AE024 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		299A782F1C82E2ED006AE024 /* Bond.framework */ = {
+		299A78701C82FFB3006AE024 /* Bond.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Bond.framework;
-			remoteRef = 299A782E1C82E2ED006AE024 /* PBXContainerItemProxy */;
+			remoteRef = 299A786F1C82FFB3006AE024 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		299A78311C82E2ED006AE024 /* tvOSAppForTesting.app */ = {
+		299A78721C82FFB3006AE024 /* tvOSAppForTesting.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = tvOSAppForTesting.app;
-			remoteRef = 299A78301C82E2ED006AE024 /* PBXContainerItemProxy */;
+			remoteRef = 299A78711C82FFB3006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78881C83006F006AE024 /* CommandLine.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CommandLine.framework;
+			remoteRef = 299A78871C83006F006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A788A1C83006F006AE024 /* CommandLineTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CommandLineTests.xctest;
+			remoteRef = 299A78891C83006F006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A789E1C830084006AE024 /* SwiftZMQ.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftZMQ.framework;
+			remoteRef = 299A789D1C830084006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78A01C830084006AE024 /* SwiftZMQTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftZMQTests.xctest;
+			remoteRef = 299A789F1C830084006AE024 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		299A78A21C830084006AE024 /* SwiftZMQ_iOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftZMQ_iOS.framework;
+			remoteRef = 299A78A11C830084006AE024 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -525,20 +525,20 @@
 			name = iSwiftCore;
 			targetProxy = 293EE2E71C7485160030DFCE /* PBXContainerItemProxy */;
 		};
-		293EE3181C748D1A0030DFCE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftZMQ;
-			targetProxy = 293EE3171C748D1A0030DFCE /* PBXContainerItemProxy */;
-		};
-		293EE3301C74997B0030DFCE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CommandLine;
-			targetProxy = 293EE32F1C74997B0030DFCE /* PBXContainerItemProxy */;
-		};
-		299A783B1C82E3EB006AE024 /* PBXTargetDependency */ = {
+		299A78751C82FFCA006AE024 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BondOSX;
-			targetProxy = 299A783A1C82E3EB006AE024 /* PBXContainerItemProxy */;
+			targetProxy = 299A78741C82FFCA006AE024 /* PBXContainerItemProxy */;
+		};
+		299A78A81C8300AD006AE024 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftZMQ;
+			targetProxy = 299A78A71C8300AD006AE024 /* PBXContainerItemProxy */;
+		};
+		299A78AA1C8300B0006AE024 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CommandLine;
+			targetProxy = 299A78A91C8300B0006AE024 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
