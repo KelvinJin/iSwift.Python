@@ -31,7 +31,7 @@ struct UserExpressions: JSONConvertable {
         return [:]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> UserExpressions? {
+    static func fromJSON(_ json: [String : AnyObject]) -> UserExpressions? {
         return nil
     }
 }
@@ -76,7 +76,7 @@ struct ExecuteRequest: Contentable {
         return [:]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> ExecuteRequest? {
+    static func fromJSON(_ json: [String : AnyObject]) -> ExecuteRequest? {
         guard let code = json["code"] as? String else { return nil }
         
         let silent = json["silent"] as? Bool ?? false

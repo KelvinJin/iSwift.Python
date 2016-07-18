@@ -15,7 +15,7 @@ struct ShutdownReply: Contentable {
         return ["restart": restart]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> ShutdownReply? {
+    static func fromJSON(_ json: [String : AnyObject]) -> ShutdownReply? {
         return nil
     }
 }

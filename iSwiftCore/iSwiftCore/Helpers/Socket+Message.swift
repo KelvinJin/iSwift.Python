@@ -7,26 +7,26 @@
 //
 
 import Foundation
-import SwiftZMQ
+import ZeroMQ
 
 // We can only send message one by one. This is for sure.
-private let SocketSendQueue = dispatch_queue_create("iSwiftCore.Socket", nil)
+private let SocketSendQueue = DispatchQueue(label: "iSwiftCore.Socket", attributes: [])
 
 extension Socket {
-    func sendMessage(message: Message) throws {
-        dispatch_async(SocketSendQueue) { [weak self] () -> Void in
+    func sendMessage(_ message: Message) throws {
+        SocketSendQueue.async() { [weak self] () -> Void in
             do {
-                Logger.Debug.print("Sending message header \(message.header)")
-                Logger.Debug.print("Sending message signature \(message.signature)")
-                Logger.Debug.print("Sending message content \(message.content)")
+                Logger.debug.print("Sending message header \(message.header)")
+                Logger.debug.print("Sending message signature \(message.signature)")
+                Logger.debug.print("Sending message content \(message.content)")
                 let messageBlobs = [message.header.session, Message.Delimiter, message.signature,
                     message.header.toJSONString(), message.parentHeader?.toJSONString() ?? "{}", "{}",
                     message.content.toJSONString()]
-                for (index, dataStr) in messageBlobs.enumerate() {
+                for (index, dataStr) in messageBlobs.enumerated() {
                     try self?.sendString(dataStr, mode: index == messageBlobs.count - 1 ? [] : .SendMore)
                 }
             } catch let e {
-                Logger.Critical.print(e)
+                Logger.critical.print(e)
             }
         }
     }

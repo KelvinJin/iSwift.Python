@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import SwiftZMQ
+import ZeroMQ
 
 class SocketIn {
     
-    static func run(socket: Socket, outMessageQueue: BlockingQueue<Message>) {
+    static func run(_ socket: Socket, outMessageQueue: BlockingQueue<Message>) {
         // Make sure the socket has been running.
         guard let _ = try? socket.getFileDescriptor() else { return }
         
@@ -21,14 +21,14 @@ class SocketIn {
         while true {
             do {
                 if let recv = try socket.receiveString() {
-                    Logger.Debug.print("Get socket string: \(recv)")
+                    Logger.debug.print("Get socket string: \(recv)")
                     if recv == Message.Delimiter {
                         // It seems to be a new message coming.
                         
                         // FIXME: Find a way to make this read extra blobs.
                         for _ in 0..<5 {
                             if let data = try socket.receiveString() {
-                                Logger.Debug.print("Get socket string: \(data)")
+                                Logger.debug.print("Get socket string: \(data)")
                                 messageBlobs.append(data)
                             }
                         }
@@ -40,7 +40,7 @@ class SocketIn {
                             // Added to the queue
                             outMessageQueue.add(message)
                         } catch let e {
-                            Logger.Info.print(e)
+                            Logger.info.print(e)
                         }
                         
                         // Remove the previous blobs.
@@ -48,35 +48,35 @@ class SocketIn {
                     }
                 }
             } catch let e {
-                Logger.Info.print(e)
+                Logger.info.print(e)
             }
         }
     }
     
-    static private func constructMessage(messageBlobs: [String]) throws -> Message {
+    static private func constructMessage(_ messageBlobs: [String]) throws -> Message {
         // Make sure there are enough blobs.
         guard messageBlobs.count >= 5 else {
-            throw Error.SocketError("message blobs are not enough.")
+            throw Error.socketError("message blobs are not enough.")
         }
         
         // Signature.
         let signature = messageBlobs[0]
         
         // Must have a header.
-        Logger.Debug.print("Parsing header...")
+        Logger.debug.print("Parsing header...")
         let header = try parse(messageBlobs[1], converter: Header.fromJSON)
         
         // May not have a parent header.
-        Logger.Debug.print("Parsing parent header...")
+        Logger.debug.print("Parsing parent header...")
         let parentHeaderStr = try parse(messageBlobs[2]) { $0 }
         let parentHeader = Header.fromJSON(parentHeaderStr)
         
         // Can be an empty metadata.
-        Logger.Debug.print("Parsing metadata...")
+        Logger.debug.print("Parsing metadata...")
         let metadata = try parse(messageBlobs[3]) { $0 }
         
         // For content, it's a bit complicated.
-        Logger.Debug.print("Parsing content...")
+        Logger.debug.print("Parsing content...")
         
         // FIXME: Rewrite the following codes.
         let content: Contentable
@@ -92,24 +92,24 @@ class SocketIn {
         case .ShutdownRequest:
             content = try parse(messageBlobs[4], converter: ShutdownRequest.fromJSON)
         default:
-            throw Error.SocketError("Undefined message content.")
+            throw Error.socketError("Undefined message content.")
         }
         
         // The rest would be extra blobs.
-        Logger.Debug.print("Parsing extraBlobs...")
-        let extraBlobs: [String] = messageBlobs.count >= 6 ? messageBlobs.suffixFrom(5).flatMap { $0 } : []
+        Logger.debug.print("Parsing extraBlobs...")
+        let extraBlobs: [String] = messageBlobs.count >= 6 ? messageBlobs.suffix(from: 5).flatMap { $0 } : []
         
         return Message(signature: signature, header: header, parentHeader: parentHeader, metadata: metadata, content: content, extraBlobs: extraBlobs)
     }
     
-    static private func parse<T>(str: String, converter: (([String: AnyObject]) -> T?)) throws -> T {
+    static private func parse<T>(_ str: String, converter: (([String: AnyObject]) -> T?)) throws -> T {
         guard let json = str.toJSON() else {
             print(str)
-            throw Error.SocketError("Parse \(str) to JSON failed.")
+            throw Error.socketError("Parse \(str) to JSON failed.")
         }
         
         guard let re = converter(json) else {
-            throw Error.SocketError("Parse JSON to \(T.self) failed.")
+            throw Error.socketError("Parse JSON to \(T.self) failed.")
         }
         
         return re

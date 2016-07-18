@@ -18,7 +18,7 @@ struct Header: JSONConvertable {
     let session: String
     
     /// ISO 8601 timestamp for when the message is created
-    let date: NSDate?
+    let date: Date?
     
     /// All recognized message type strings are listed below
     let msgType: MessageType
@@ -26,8 +26,8 @@ struct Header: JSONConvertable {
     /// the message protocol version
     let version: String
     
-    init(msgId: String = NSUUID().UUIDString, username: String = "kernel",
-        session: String, date: NSDate? = NSDate(), msgType: MessageType, version: String = "5.0") {
+    init(msgId: String = UUID().uuidString, username: String = "kernel",
+        session: String, date: Date? = Date(), msgType: MessageType, version: String = "5.0") {
         self.msgId = msgId
         self.username = username
         self.session = session
@@ -48,7 +48,7 @@ struct Header: JSONConvertable {
         return base
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> Header? {
+    static func fromJSON(_ json: [String : AnyObject]) -> Header? {
         guard let msgId = json["msg_id"] as? String,
             username = json["username"] as? String,
             session = json["session"] as? String,

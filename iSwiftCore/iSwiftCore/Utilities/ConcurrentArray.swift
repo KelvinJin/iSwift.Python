@@ -15,7 +15,7 @@ class ConcurrentArray<T> {
         self.dataSource = [T]()
     }
     
-    func append(element: T) {
+    func append(_ element: T) {
         synchronized(self) {
             dataSource.append(element)
         }
@@ -33,15 +33,15 @@ class ConcurrentArray<T> {
         }
     }
     
-    func removeAtIndex(index: Int) -> T {
+    func removeAtIndex(_ index: Int) -> T {
         return synchronized(self) { () -> T in
-            return dataSource.removeAtIndex(index)
+            return dataSource.remove(at: index)
         }
     }
     
-    func removeAll(keepCapacity keepCapacity: Bool = false) {
+    func removeAll(_ keepCapacity: Bool = false) {
         synchronized(self) {
-            dataSource.removeAll(keepCapacity: keepCapacity)
+            dataSource.removeAll(keepingCapacity: keepCapacity)
         }
     }
 }

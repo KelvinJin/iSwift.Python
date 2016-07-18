@@ -7,24 +7,23 @@
 //
 
 import Foundation
-import Bond
 
 enum REPLState {
-    case Prompt
-    case Input
-    case Output
+    case prompt
+    case input
+    case output
 }
 
 class REPLWrapper: NSObject {
     private let command: String
     private var prompt: String
     private var continuePrompt: String
-    private var communicator: NSFileHandle!
+    private var communicator: FileHandle!
     private var lastOutput: String = ""
     private var consoleOutput = Observable<String>("")
-    private var currentTask: NSTask!
+    private var currentTask: Task!
     
-    private let runModes = [NSDefaultRunLoopMode, NSModalPanelRunLoopMode, NSEventTrackingRunLoopMode]
+    private let runModes = [RunLoopMode.defaultRunLoopMode, NSModalPanelRunLoopMode, NSEventTrackingRunLoopMode]
     
     init(command: String, prompt: String, continuePrompt: String) throws {
         self.command = command
@@ -36,16 +35,16 @@ class REPLWrapper: NSObject {
         try launchTaskInBackground()
     }
     
-    func didReceivedData(notification: NSNotification) {
+    func didReceivedData(_ notification: Notification) {
         let data = communicator.availableData
         
-        guard let dataStr = NSString(data: data, encoding: NSUTF8StringEncoding) as? String else { return }
+        guard let dataStr = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String else { return }
         
         // For every data the console gives, it can be a new prompt or a continue prompt or an actual output.
         // We'll need to deal with it accordingly.
-        if dataStr.match(prompt, options: [.AnchorsMatchLines]) {
+        if dataStr.match(prompt, options: [.anchorsMatchLines]) {
             // It's a new prompt.
-        } else if dataStr.match(continuePrompt, options: [.AnchorsMatchLines]) {
+        } else if dataStr.match(continuePrompt, options: [.anchorsMatchLines]) {
             // It's a continue prompt. It means the console is expecting more data.
         } else {
             // It's a raw output.
@@ -53,9 +52,9 @@ class REPLWrapper: NSObject {
         
         // Sometimes, the output will contain multiline string. We can't deal with them once. We
         // need to separater them, so that the prompt is dealt in time and the raw output will be captured.
-        let lines = dataStr.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+        let lines = dataStr.components(separatedBy: CharacterSet.newlines)
         
-        for (index, line) in lines.enumerate() {
+        for (index, line) in lines.enumerated() {
             guard !line.isEmpty else { continue }
             
             // Don't remember to add a new line to compensate the loss of the non last line.
@@ -66,20 +65,20 @@ class REPLWrapper: NSObject {
             }
         }
         
-        communicator.waitForDataInBackgroundAndNotifyForModes(runModes)
+        communicator.waitForDataInBackgroundAndNotify(forModes: runModes as! [RunLoopMode])
     }
     
-    func taskDidTerminated(notification: NSNotification) {
+    func taskDidTerminated(_ notification: Notification) {
     }
     
     // The command might be a multiline command.
-    func runCommand(cmd: String) -> String {
+    func runCommand(_ cmd: String) -> String {
         // Clear the previous output.
         var currentOutput = ""
         
         // We'll observe the output stream and make sure all non-prompts gets recorded into output.
         
-        for line in cmd.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()) {
+        for line in cmd.components(separatedBy: CharacterSet.newlines) {
             // Send out this line for execution.
             sendLine(line)
             
@@ -99,7 +98,7 @@ class REPLWrapper: NSObject {
         return lastOutput
     }
     
-    func shutdown(restart: Bool) throws {
+    func shutdown(_ restart: Bool) throws {
         // For now, we just terminate it forcely. We should probably
         // use :quit in the future.
         currentTask.terminate()
@@ -110,11 +109,11 @@ class REPLWrapper: NSObject {
     }
     
     private func launchTaskInBackground() throws {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { [unowned self] in
+        DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault).async { [unowned self] in
             do {
                 try self.launchTask()
             } catch let e {
-                Logger.Critical.print(e)
+                Logger.critical.print(e)
             }
         }
         
@@ -122,25 +121,25 @@ class REPLWrapper: NSObject {
     }
     
     private func launchTask() throws {
-        currentTask = NSTask()
+        currentTask = Task()
         currentTask.launchPath = command
         
         communicator = try currentTask.masterSideOfPTY()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceivedData:",
-            name: NSFileHandleDataAvailableNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(REPLWrapper.didReceivedData(_:)),
+            name: NSNotification.Name.NSFileHandleDataAvailable, object: nil)
         
-        communicator.waitForDataInBackgroundAndNotifyForModes(runModes)
+        communicator.waitForDataInBackgroundAndNotify(forModes: runModes as! [RunLoopMode])
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "taskDidTerminated:",
-            name: NSTaskDidTerminateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(REPLWrapper.taskDidTerminated(_:)),
+            name: Task.didTerminateNotification, object: nil)
         
         currentTask.launch()
         
         currentTask.waitUntilExit()
     }
     
-    private func sendLine(code: String) {
+    private func sendLine(_ code: String) {
         // Get rid of the new line stuff which make no sense.
         var trimmedLine = code.trim()
         
@@ -148,23 +147,23 @@ class REPLWrapper: NSObject {
         // this new line if the trimmed code is empty.
         trimmedLine += "\n"
         
-        if let codeData = trimmedLine.dataUsingEncoding(NSUTF8StringEncoding) {
-            communicator.writeData(codeData)
+        if let codeData = trimmedLine.data(using: String.Encoding.utf8) {
+            communicator.write(codeData)
         }
     }
     
-    private func expect(patterns: [String], otherHandler: (String) -> Void = { _ in }) {
-        let promptSemaphore = dispatch_semaphore_create(0)
+    private func expect(_ patterns: [String], otherHandler: (String) -> Void = { _ in }) {
+        let promptSemaphore = DispatchSemaphore(value: 0)
         
         let dispose = consoleOutput.observeNew {(output) -> Void in
             for pattern in patterns where output.match(pattern) {
-                dispatch_semaphore_signal(promptSemaphore)
+                promptSemaphore.signal()
                 return
             }
             otherHandler(output)
         }
         
-        dispatch_semaphore_wait(promptSemaphore, DISPATCH_TIME_FOREVER)
+        promptSemaphore.wait(timeout: DispatchTime.distantFuture)
         
         dispose.dispose()
     }

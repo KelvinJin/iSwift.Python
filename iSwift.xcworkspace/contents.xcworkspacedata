@@ -2,13 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:External/Bond/Bond.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:External/CommandLine/CommandLine.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:External/SwiftZMQ/SwiftZMQ.xcodeproj">
+      location = "group:External/SwiftZMQ/ZeroMQ.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:iSwiftCore/iSwiftCore.xcodeproj">

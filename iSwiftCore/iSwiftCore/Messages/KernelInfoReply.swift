@@ -18,7 +18,7 @@ struct LanguageInfo: JSONConvertable {
         return ["name": name, "version": version, "mimetype": mimetype, "file_extension": fileExtension]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> LanguageInfo? {
+    static func fromJSON(_ json: [String : AnyObject]) -> LanguageInfo? {
         return nil
     }
 }
@@ -38,7 +38,7 @@ struct KernelInfoReply: Contentable {
             "banner": banner]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> KernelInfoReply? {
+    static func fromJSON(_ json: [String : AnyObject]) -> KernelInfoReply? {
         return nil
     }
 }

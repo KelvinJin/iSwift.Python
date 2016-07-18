@@ -17,7 +17,7 @@ struct ExecuteResult: Contentable {
         return ["execution_count": executionCount, "data": data, "metadata": metadata]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> ExecuteResult? {
+    static func fromJSON(_ json: [String : AnyObject]) -> ExecuteResult? {
         return nil
     }
 }

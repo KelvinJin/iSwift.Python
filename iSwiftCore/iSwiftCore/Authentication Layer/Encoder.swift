@@ -9,7 +9,7 @@
 import Foundation
 
 class Encoder {
-    static func run(key: String, inMessageQueue: BlockingQueue<Message>, outMessageQueue: BlockingQueue<Message>) {
+    static func run(_ key: String, inMessageQueue: BlockingQueue<Message>, outMessageQueue: BlockingQueue<Message>) {
         while true {
             // Take some message from the queue and check whether the signature matches the message.
             var message = inMessageQueue.take()
@@ -18,7 +18,7 @@ class Encoder {
         }
     }
     
-    static private func encode(key: String, inout message: Message) -> Message {
+    static private func encode(_ key: String, message: inout Message) -> Message {
         message.signature = message.toSHA256(key)
         return message
     }

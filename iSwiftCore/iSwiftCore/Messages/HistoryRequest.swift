@@ -42,7 +42,7 @@ struct HistoryRequest: Contentable {
         return [:]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> HistoryRequest? {
+    static func fromJSON(_ json: [String : AnyObject]) -> HistoryRequest? {
         guard let histAccessType = json["hist_access_type"] as? String
             else { return nil }
         

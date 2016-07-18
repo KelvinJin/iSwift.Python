@@ -16,7 +16,7 @@ struct HistoryReply: Contentable {
         return ["history": []]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> HistoryReply? {
+    static func fromJSON(_ json: [String : AnyObject]) -> HistoryReply? {
         return nil
     }
 }

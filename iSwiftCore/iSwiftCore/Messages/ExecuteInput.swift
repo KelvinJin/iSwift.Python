@@ -16,7 +16,7 @@ struct ExecuteInput: Contentable {
         return ["code": code, "execution_count": executionCount]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> ExecuteInput? {
+    static func fromJSON(_ json: [String : AnyObject]) -> ExecuteInput? {
         return nil
     }
 }

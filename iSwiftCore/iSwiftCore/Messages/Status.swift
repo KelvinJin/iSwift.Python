@@ -15,7 +15,7 @@ struct Status: Contentable {
         return ["execution_state": executionState]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> Status? {
+    static func fromJSON(_ json: [String : AnyObject]) -> Status? {
         return nil
     }
 }

@@ -1,0 +1,10 @@
+framework module iSwiftCore {
+  umbrella header "iSwiftCore.h"
+
+  export *
+  module * { export * }
+}
+
+module iSwiftCore.Swift {
+    header "iSwiftCore-Swift.h"
+}

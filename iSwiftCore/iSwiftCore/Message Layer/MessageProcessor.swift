@@ -20,12 +20,12 @@ class MessageProcessor {
     
     private static let replWrapper = try! REPLWrapper(command: "/usr/bin/swift", prompt: "^\\s*\\d+>\\s*$", continuePrompt: "^\\s*\\d+\\.\\s*$")
     
-    static func run(inMessageQueue: BlockingQueue<Message>, outMessageQueue: BlockingQueue<Message>) {
+    static func run(_ inMessageQueue: BlockingQueue<Message>, outMessageQueue: BlockingQueue<Message>) {
         while true {
             let message = inMessageQueue.take()
             let requestHeader = message.header
             
-            Logger.Debug.print("Processing new message...")
+            Logger.debug.print("Processing new message...")
             
             guard let replyType = requestHeader.msgType.replyType else { continue }
             
@@ -49,12 +49,12 @@ class MessageProcessor {
             case .ShutdownReply:
                 let content = message.content as! ShutdownRequest
                 
-                Logger.Info.print("Shutting down...")
+                Logger.info.print("Shutting down...")
                 
                 do {
                     try replWrapper.shutdown(content.restart)
                 } catch let e {
-                    Logger.Critical.print(e)
+                    Logger.critical.print(e)
                 }
                 
                 replyContent = ShutdownReply(restart: content.restart)
@@ -68,7 +68,7 @@ class MessageProcessor {
         }
     }
     
-    private static func execute(cmd: String, executionCount: Int, parentHeader: Header, metadata: [String: AnyObject]) {
+    private static func execute(_ cmd: String, executionCount: Int, parentHeader: Header, metadata: [String: AnyObject]) {
         if session.isEmpty {
             session = parentHeader.session
             
@@ -86,12 +86,11 @@ class MessageProcessor {
         sendIOPubMessage(.ExecuteResult, content: content, parentHeader: parentHeader)
     }
     
-    private static func sendIOPubMessage(type: MessageType, content: Contentable, parentHeader: Header?, metadata: [String: AnyObject] = [:]) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+    private static func sendIOPubMessage(_ type: MessageType, content: Contentable, parentHeader: Header?, metadata: [String: AnyObject] = [:]) {
+        DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault).async { () -> Void in
             let header = Header(session: session, msgType: type)
             let message = Message(header: header, parentHeader: parentHeader, metadata: metadata, content: content)
-            let userInfo = ["message": message]
-            NSNotificationCenter.defaultCenter().postNotificationName("IOPubNotification", object: nil, userInfo: userInfo)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "IOPubNotification"), object: message, userInfo: nil)
         }
     }
 }

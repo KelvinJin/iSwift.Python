@@ -20,7 +20,7 @@ struct IsCompleteReply: Contentable {
         }
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> IsCompleteReply? {
+    static func fromJSON(_ json: [String : AnyObject]) -> IsCompleteReply? {
         return nil
     }
 }

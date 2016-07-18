@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import SwiftZMQ
+import ZeroMQ
 
 class SocketOut {
-    static func run(socket: Socket, inMessageQueue: BlockingQueue<Message>) {
+    static func run(_ socket: Socket, inMessageQueue: BlockingQueue<Message>) {
         while true {
             do {
                 // Blockingly take message from the queue.
@@ -19,7 +19,7 @@ class SocketOut {
                 // Sequently send each part of the message.
                 try socket.sendMessage(message)
             } catch let e {
-                Logger.Info.print(e)
+                Logger.info.print(e)
             }
         }
     }

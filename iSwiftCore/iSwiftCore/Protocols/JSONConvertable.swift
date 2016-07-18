@@ -9,36 +9,36 @@
 import Foundation
 
 protocol JSONConvertable {
-    static func fromJSON(json: [String: AnyObject]) -> Self?
+    static func fromJSON(_ json: [String: AnyObject]) -> Self?
     func toJSON() -> [String: AnyObject]
 }
 
 extension JSONConvertable {
-    func toData() -> NSData { return toJSON().toData() }
+    func toData() -> Data { return toJSON().toData() }
     func toBytes() -> [UInt8] { return toJSON().toBytes() }
     func toJSONString() -> String {
-        return (NSString(data: toData(), encoding: NSUTF8StringEncoding) ?? "") as String
+        return (NSString(data: toData(), encoding: String.Encoding.utf8.rawValue) ?? "") as String
     }
 }
 
 extension Dictionary where Key: StringLiteralConvertible, Value: AnyObject {
-    func toData() -> NSData {
+    func toData() -> Data {
         do {
             if let dict = (self as? AnyObject) as? Dictionary<String, AnyObject> {
-                return try NSJSONSerialization.dataWithJSONObject(dict, options: [])
+                return try JSONSerialization.data(withJSONObject: dict, options: [])
             }
-            return NSData()
+            return Data()
         } catch let e {
             print("NSJSONSerialization Error: \(e)")
-            return NSData()
+            return Data()
         }
     }
     
     func toBytes() -> [UInt8] {
         let data = toData()
-        let count = data.length
-        var bytes = [UInt8](count: count, repeatedValue: 0)
-        data.getBytes(&bytes, length: count)
+        let count = data.count
+        var bytes = [UInt8](repeating: 0, count: count)
+        (data as NSData).getBytes(&bytes, length: count)
         
         return bytes
     }

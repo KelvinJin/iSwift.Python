@@ -27,12 +27,12 @@ public class SHA256 {
         self.key = key
     }
     
-    func update(bytes: [UInt8]) {
-        self.bytes.appendContentsOf(bytes)
+    func update(_ bytes: [UInt8]) {
+        self.bytes.append(contentsOf: bytes)
     }
     
     func digest() -> [UInt8] {
-        var hash = [UInt8](count: Int(CC_SHA256_DIGEST_LENGTH), repeatedValue: 0)
+        var hash = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
         
         let keyStr = key.utf8.map { Int8($0) }
         

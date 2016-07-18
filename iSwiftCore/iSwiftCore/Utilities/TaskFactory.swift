@@ -9,17 +9,17 @@
 import Foundation
 
 class TaskFactory {
-    private let taskQueue: dispatch_queue_t
+    private let taskQueue: DispatchQueue
     
     init() {
-        taskQueue = dispatch_queue_create("\(self.dynamicType).\(NSUUID().UUIDString)", DISPATCH_QUEUE_CONCURRENT)
+        taskQueue = DispatchQueue(label: "\(self.dynamicType).\(UUID().uuidString)", attributes: DispatchQueueAttributes.concurrent)
     }
     
-    func startNew(taskBlock: dispatch_block_t) {
-        dispatch_async(taskQueue, taskBlock)
+    func startNew(_ taskBlock: ()->()) {
+        taskQueue.async(execute: taskBlock)
     }
     
     func waitAll() {
-        dispatch_barrier_sync(taskQueue) {}
+        taskQueue.sync(flags: .barrier, execute: {}) 
     }
 }

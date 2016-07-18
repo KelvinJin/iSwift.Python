@@ -15,7 +15,7 @@ struct IsCompleteRequest: Contentable {
         return [:]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> IsCompleteRequest? {
+    static func fromJSON(_ json: [String : AnyObject]) -> IsCompleteRequest? {
         guard let code = json["code"] as? String else { return nil }
         
         return IsCompleteRequest(code: code)

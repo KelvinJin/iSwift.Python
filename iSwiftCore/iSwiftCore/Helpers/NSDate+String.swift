@@ -8,20 +8,20 @@
 
 import Foundation
 
-private var ISO8601DateFormatter: NSDateFormatter {
-    let dateFormatter = NSDateFormatter()
+private var ISO8601DateFormatter: DateFormatter {
+    let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
     return dateFormatter
 }
 
-extension NSDate {
+extension Date {
     func toISO8601String() -> String {
-        return ISO8601DateFormatter.stringFromDate(self)
+        return ISO8601DateFormatter.string(from: self)
     }
 }
 
 extension String {
-    func toISO8601Date() -> NSDate? {
-        return ISO8601DateFormatter.dateFromString(self)
+    func toISO8601Date() -> Date? {
+        return ISO8601DateFormatter.date(from: self)
     }
 }

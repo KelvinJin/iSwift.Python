@@ -24,7 +24,7 @@ enum MessageType: String {
     case ShutdownReply = "shutdown_reply"
 
     var replyType: MessageType? {
-        return MessageType(rawValue: self.rawValue.stringByReplacingOccurrencesOfString("request", withString: "reply"))
+        return MessageType(rawValue: self.rawValue.replacingOccurrences(of: "request", with: "reply"))
     }
 }
 
@@ -63,7 +63,7 @@ class Message {
         self.extraBlobs = extraBlobs
     }
     
-    func toSHA256(key: String) -> String {
+    func toSHA256(_ key: String) -> String {
         let digestor = SHA256(key: key)
         
         let emptyDict: [String: AnyObject] = [:]

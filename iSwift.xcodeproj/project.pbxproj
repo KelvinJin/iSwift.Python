@@ -10,9 +10,9 @@
 		293EE2691C747A640030DFCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 293EE2681C747A640030DFCE /* main.m */; };
 		293EE27C1C747B4E0030DFCE /* iSwift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 293EE2651C747A640030DFCE /* iSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		293EE2E21C7482D50030DFCE /* iSwiftCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 293EE2BD1C747D200030DFCE /* iSwiftCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		299A78771C82FFD2006AE024 /* Bond.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 299A786A1C82FFB3006AE024 /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		299A78A51C830099006AE024 /* SwiftZMQ.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 299A789E1C830084006AE024 /* SwiftZMQ.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		299A78A61C83009F006AE024 /* CommandLine.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 299A78881C83006F006AE024 /* CommandLine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		29D0586E1D3CAEEF00632ADB /* C7.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29D0586C1D3CAE0400632ADB /* C7.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		29D0586F1D3CAEEF00632ADB /* ZeroMQ.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29D058691D3CADE600632ADB /* ZeroMQ.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,9 +170,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				29D0586E1D3CAEEF00632ADB /* C7.framework in CopyFiles */,
+				29D0586F1D3CAEEF00632ADB /* ZeroMQ.framework in CopyFiles */,
 				299A78A61C83009F006AE024 /* CommandLine.framework in CopyFiles */,
-				299A78A51C830099006AE024 /* SwiftZMQ.framework in CopyFiles */,
-				299A78771C82FFD2006AE024 /* Bond.framework in CopyFiles */,
 				293EE2E21C7482D50030DFCE /* iSwiftCore.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +188,8 @@
 		299A785B1C82FFB3006AE024 /* Bond.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bond.xcodeproj; path = External/Bond/Bond.xcodeproj; sourceTree = "<group>"; };
 		299A78821C83006F006AE024 /* CommandLine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommandLine.xcodeproj; path = External/CommandLine/CommandLine.xcodeproj; sourceTree = "<group>"; };
 		299A78971C830084006AE024 /* SwiftZMQ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftZMQ.xcodeproj; path = External/SwiftZMQ/SwiftZMQ.xcodeproj; sourceTree = "<group>"; };
+		29D058691D3CADE600632ADB /* ZeroMQ.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZeroMQ.framework; path = "../../../Library/Developer/Xcode/DerivedData/iSwift-exermzducwoqtxgcjhzztxzomjwn/Build/Products/Debug/ZeroMQ.framework"; sourceTree = "<group>"; };
+		29D0586C1D3CAE0400632ADB /* C7.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = C7.framework; path = "../../../Library/Developer/Xcode/DerivedData/iSwift-exermzducwoqtxgcjhzztxzomjwn/Build/Products/Debug/C7.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,8 @@
 		293EE25C1C747A640030DFCE = {
 			isa = PBXGroup;
 			children = (
+				29D0586C1D3CAE0400632ADB /* C7.framework */,
+				29D058691D3CADE600632ADB /* ZeroMQ.framework */,
 				293EE2B71C747D0B0030DFCE /* Frameworks */,
 				293EE2671C747A640030DFCE /* iSwift */,
 				293EE2741C747AE80030DFCE /* iSwiftBundle */,
@@ -345,7 +349,7 @@
 		293EE25D1C747A640030DFCE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Uthoft;
 				TargetAttributes = {
 					293EE2641C747A640030DFCE = {
@@ -353,6 +357,7 @@
 					};
 					293EE2721C747AE80030DFCE = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -641,13 +646,14 @@
 		293EE2771C747AE80030DFCE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = iSwiftBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Uthoft.iSwiftBundle;
 				PRODUCT_NAME = iSwift;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -655,13 +661,14 @@
 		293EE2781C747AE80030DFCE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = iSwiftBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Uthoft.iSwiftBundle;
 				PRODUCT_NAME = iSwift;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;

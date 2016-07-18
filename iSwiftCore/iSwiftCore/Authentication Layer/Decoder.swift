@@ -9,12 +9,12 @@
 import Foundation
 
 class Decoder {
-    static func run(key: String, inMessageQueue: BlockingQueue<Message>, outMessageQueue: BlockingQueue<Message>) {
+    static func run(_ key: String, inMessageQueue: BlockingQueue<Message>, outMessageQueue: BlockingQueue<Message>) {
         while true {
             // Take some message from the queue and check whether the signature matches the message.
             let message = inMessageQueue.take()
             
-            Logger.Debug.print("Decoding new message...")
+            Logger.debug.print("Decoding new message...")
             
             if let decodedMessage = decode(key, message: message) {
                 outMessageQueue.add(decodedMessage)
@@ -22,7 +22,7 @@ class Decoder {
         }
     }
     
-    static private func decode(key: String, message: Message) -> Message? {
+    static private func decode(_ key: String, message: Message) -> Message? {
 //        return message.signature == message.toSHA256(key) ? message : nil
         return message
     }

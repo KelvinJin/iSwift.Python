@@ -19,7 +19,7 @@ class Stack<T> {
         self.dataSource = [T]()
     }
     
-    func push(element: T) {
+    func push(_ element: T) {
         dataSource.append(element)
     }
     

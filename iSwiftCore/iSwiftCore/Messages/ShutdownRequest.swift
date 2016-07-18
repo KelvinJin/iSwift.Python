@@ -16,7 +16,7 @@ struct ShutdownRequest: Contentable {
         return [:]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> ShutdownRequest? {
+    static func fromJSON(_ json: [String : AnyObject]) -> ShutdownRequest? {
         let restart = json["restart"] as? Bool ?? false
         
         return ShutdownRequest(restart: restart)

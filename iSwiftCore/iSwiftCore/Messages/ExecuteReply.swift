@@ -39,7 +39,7 @@ struct ExecuteReply: Contentable {
         return base
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> ExecuteReply? {
+    static func fromJSON(_ json: [String : AnyObject]) -> ExecuteReply? {
         return nil
     }
 }

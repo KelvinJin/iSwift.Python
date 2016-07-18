@@ -1,6 +1,3 @@
-[submodule "External/Bond"]
-	path = External/Bond
-	url = https://github.com/SwiftBond/Bond.git
 [submodule "External/SwiftZMQ"]
 	path = External/SwiftZMQ
 url=https://github.com/KelvinJin/SwiftZMQ.git

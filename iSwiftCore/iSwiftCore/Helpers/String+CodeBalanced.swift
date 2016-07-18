@@ -15,9 +15,9 @@ extension String {
         let closeBrackets: [Character] = [")", "]", "}"]
         
         for c in stripQuotes().characters {
-            if let index = openBrackets.indexOf(c) {
+            if let index = openBrackets.index(of: c) {
                 stack.push(index)
-            } else if let index = closeBrackets.indexOf(c) {
+            } else if let index = closeBrackets.index(of: c) {
                 guard let openIndex = stack.pop() where openIndex == index else {
                     return false
                 }
@@ -29,9 +29,9 @@ extension String {
     
     func stripQuotes() -> String {
         // Remove \\ even number of back slash
-        return stringByReplacingOccurrencesOfString("\\\\", withString: "")
+        return replacingOccurrences(of: "\\\\", with: "")
         // Remove \" escaped quote.
-        .stringByReplacingOccurrencesOfString("\\\"", withString: "")
+        .replacingOccurrences(of: "\\\"", with: "")
         // Remove paired quotes.
         .replace("\"[^\"]*\"", template: "")
     }

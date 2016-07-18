@@ -13,7 +13,7 @@ struct KernelInfoRequest: Contentable {
         return [:]
     }
     
-    static func fromJSON(json: [String : AnyObject]) -> KernelInfoRequest? {
+    static func fromJSON(_ json: [String : AnyObject]) -> KernelInfoRequest? {
         return KernelInfoRequest()
     }
 }
